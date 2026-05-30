@@ -1,86 +1,63 @@
-<!-- ════════════ ABOUT PAGE ════════════ -->
-<div class="about-hero">
-  <div class="about-hero-content">
-    <div class="section-label">Our Story</div>
-    <h1 class="section-title">About MG Web Solutions</h1>
-    <p class="section-sub">
-      MG Web Solutions was created to help businesses build modern digital experiences with clarity,
-      strategy, and purpose.
-    </p>
-    <p class="section-sub" style="margin-top: 16px">
-      We believe successful projects start with understanding your goals before writing a single
-      line of code.
-    </p>
-    <p class="section-sub" style="margin-top: 16px">
-      Our focus is on quality, communication, and delivering solutions that truly make an impact.
-    </p>
-    <div style="margin-top: 36px">
-      <button class="btn btn-primary" routerLink="/contact">Work With Us →</button>
-    </div>
-  </div>
-  <div>
-    <div class="about-founder-card">
-      <div class="founder-avatar">M</div>
-      <div class="founder-name">Malina Giri</div>
-      <div class="founder-role">Founder & IT Engineer · Web & Digital Solutions</div>
-      <div class="founder-stats">
-        <div class="founder-stat">
-          <div class="founder-stat-n">3+</div>
-          <div class="founder-stat-l">Years Experience</div>
-        </div>
-        <div class="founder-stat">
-          <div class="founder-stat-n">50+</div>
-          <div class="founder-stat-l">Projects Done</div>
-        </div>
-      </div>
-      <div class="founder-quote">
-        "We build more than websites, we build long-term partnerships."
-      </div>
-    </div>
-  </div>
+<div class="page-hero reveal">
+  <span class="section-tag">About</span>
+  <h1 class="section-heading">Built by an Engineer.<br><span class="accent-text">Driven by Results.</span></h1>
+  <div class="divider-line"></div>
+  <p class="section-desc">Nearly 2 years of professional experience building enterprise applications — now focused on helping businesses build their digital presence.</p>
 </div>
 
-<div class="about-values">
-  <div class="container">
-    <div class="section-label">What Drives Us</div>
-    <h2 class="section-title">Our Values</h2>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon">🎯</div>
-        <div class="value-title">Quality First</div>
-        <div class="value-desc">
-          We never compromise on the quality of our work. Every pixel and every line of code is
-          crafted with care and attention to detail.
-        </div>
+<section class="about-grid-section">
+  <div class="about-grid">
+    <!-- Left: Story -->
+    <div class="about-story reveal">
+      <h2 class="about-sub-heading">Who I Am</h2>
+      <p>Hi, I'm <strong>Melina Giri</strong> — a Software Engineer and Full-Stack Developer based in Kathmandu. I hold a Bachelor's in Information Technology from NCIT (PU Scholarship 2018) and am currently pursuing my Master's in IT.</p>
+      <p>MG Web Solutions is my professional practice for delivering <strong>high-quality digital solutions</strong> to businesses of all sizes. Every project starts with understanding your goals, not just your requirements.</p>
+      <p>My philosophy: <strong>Strategy before design. Plan before we build.</strong> This separates websites that simply exist from websites that actually work.</p>
+
+      <h2 class="about-sub-heading" style="margin-top: 2rem;">Technical Skills</h2>
+      <div class="skills-grid">
+        @for (skill of skills; track skill.label) {
+          <span class="tag" [class.tag-blue]="skill.blue" [class.tag-muted]="!skill.blue">
+            {{ skill.label }}
+          </span>
+        }
       </div>
-      <div class="value-card">
-        <div class="value-icon">💬</div>
-        <div class="value-title">Clear Communication</div>
-        <div class="value-desc">
-          We keep you informed every step of the way. No jargon, no surprises — just honest,
-          transparent updates throughout your project.
-        </div>
+
+      <div class="about-cta">
+        <a routerLink="/contact" class="btn btn-primary">Start a Project →</a>
+        <a href="mailto:contact@melinagiri.com.np" class="btn btn-outline">contact&#64;melinagiri.com.np</a>
       </div>
-      <div class="value-card">
-        <div class="value-icon">🚀</div>
-        <div class="value-title">Results Driven</div>
-        <div class="value-desc">
-          We measure success by the impact our work has on your business. Our goal is always to
-          deliver solutions that move the needle for you.
+    </div>
+
+    <!-- Right: Experience -->
+    <div class="about-exp reveal reveal-delay-1">
+      <h2 class="about-sub-heading">Experience</h2>
+      <div class="exp-timeline">
+        @for (exp of experience; track exp.role) {
+          <div class="exp-item">
+            <div class="exp-dot-wrapper">
+              <div class="exp-dot"></div>
+              <div class="exp-line"></div>
+            </div>
+            <div class="exp-content">
+              <div class="exp-period">{{ exp.period }}</div>
+              <h3 class="exp-role">{{ exp.role }}</h3>
+              <div class="exp-company">{{ exp.company }}</div>
+              <p class="exp-desc">{{ exp.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <h3 class="edu-title">Education</h3>
+          <p class="edu-item"><strong>MIT</strong> — Central Dept. CSIT (2025–Present)</p>
+          <p class="edu-item"><strong>BE in Information Technology</strong> — NCIT (2018–2024) · GPA 3.18 · PU Scholar</p>
+          <p class="edu-item"><strong>+2 Science</strong> — United Academy, Lalitpur · GPA 3.18</p>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="about-quote-section">
-  <div class="big-quote">
-    "We build more than websites, we build <span class="hl">long-term partnerships.</span>"
-  </div>
-  <div class="quote-attr">— Malina Giri, Founder of MG Web Solutions</div>
-  <div style="margin-top: 36px">
-    <button class="btn btn-primary" routerLink="/contact" style="margin: 0 auto">
-      Start Your Project →
-    </button>
-  </div>
-</div>
+</section>

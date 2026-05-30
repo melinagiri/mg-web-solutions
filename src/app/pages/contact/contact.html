@@ -1,82 +1,88 @@
-<!-- ════════════ CONTACT PAGE ════════════ -->
-<div class="contact-section">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="section-label">Get In Touch</div>
-      <h1 class="section-title">Let's Start Your Project</h1>
-      <p class="section-sub">Have an idea? Let's discuss how we can bring it to life.</p>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div>
-            <div class="contact-item-label">Email</div>
-            <div class="contact-item-val">contact@melinagiri.com.np</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div>
-            <div class="contact-item-label">Location</div>
-            <div class="contact-item-val">Lalitpur, Nepal</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">💼</div>
-          <div>
-            <div class="contact-item-label">LinkedIn</div>
-            <div class="contact-item-val">linkedin.com/in/melinagiri</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📘</div>
-          <div>
-            <div class="contact-item-label">Facebook</div>
-            <div class="contact-item-val">MG Web Hub</div>
-          </div>
-        </div>
-      </div>
+<section id="contact" class="contact-section">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <span class="section-tag">Get In Touch</span>
+      <h2>Ready to Build<br>Something Great?</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Tell us about your project and we'll respond within 24 hours. No pressure, just a conversation.
+      </p>
     </div>
 
-    <div class="contact-form-card">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Your Name</label>
-          <input type="text" class="form-input" placeholder="Malina Giri" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Your Email</label>
-          <input type="email" class="form-input" placeholder="hello@example.com" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Project Type</label>
-          <select class="form-select">
-            <option>Website</option>
-            <option>Web Application</option>
-            <option>UI/UX Design</option>
-            <option>Digital Solution</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Budget Range</label>
-          <select class="form-select">
-            <option>NPR 15k – 25k</option>
-            <option>NPR 25k – 50k</option>
-            <option>NPR 50k+</option>
-            <option>Let's discuss</option>
-          </select>
+    <div class="contact-grid fade-in">
+
+      <!-- Left: Info -->
+      <div class="contact-info">
+        <h3>Let's start with a conversation.</h3>
+        <p>Whether you have a fully formed idea or just a direction — we'd love to hear about it. We work with businesses across Nepal and worldwide.</p>
+
+        <div class="contact-links">
+          <a
+            *ngFor="let link of contactLinks"
+            [href]="link.href"
+            [target]="isExternalLink(link.href) ? '_blank' : '_self'"
+            class="contact-link"
+          >
+            <div class="cl-icon">{{ link.icon }}</div>
+            <div class="cl-text">
+              <strong>{{ link.label }}</strong>
+              <span>{{ link.sublabel }}</span>
+            </div>
+            <div class="cl-arrow">→</div>
+          </a>
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Your Message</label>
-        <textarea
-          class="form-textarea"
-          placeholder="Tell me about your project, goals, and timeline..."
-        ></textarea>
+
+      <!-- Right: Form -->
+      <div class="contact-form-wrap">
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input
+                type="text"
+                placeholder="Aarav Sharma"
+                formControlName="name"
+              />
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input
+                type="email"
+                placeholder="you@company.com"
+                formControlName="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>What are you looking for?</label>
+            <select formControlName="service">
+              <option value="">Select a service</option>
+              <option
+                *ngFor="let opt of serviceOptions"
+                [value]="opt.value"
+              >{{ opt.label }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Tell us about your project</label>
+            <textarea
+              placeholder="Describe your business, goals, and what you'd like to build..."
+              formControlName="message"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Send Message ✦
+          </button>
+
+        </form>
       </div>
-      <button class="form-submit" onclick="handleSubmit(this)">Send Message →</button>
+
     </div>
   </div>
-</div>
+</section>

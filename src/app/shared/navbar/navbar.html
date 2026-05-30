@@ -1,21 +1,54 @@
-<!-- NAV -->
-<nav id="mainNav">
+<nav class="navbar" [class.scrolled]="isScrolled()">
   <div class="nav-inner">
-    <div class="logo" routerLink="/home">
-      <div class="logo-box">MG</div>
-      <div>
-        <div class="logo-text">MG WEB SOLUTIONS</div>
-        <div class="logo-sub">Digital Experiences</div>
+    <!-- Logo -->
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
+      <div class="logo-mark">MG</div>
+      <div class="logo-text">
+        <span class="logo-name">MG Web Solutions</span>
+        <span class="logo-sub">WEB SOLUTIONS</span>
       </div>
-    </div>
-    <div class="nav-links">
-      <a routerLink="/" id="nav-home" class="active">Home</a>
-      <a routerLink="/services" id="nav-services">Services</a>
-      <a routerLink="/process" id="nav-process">Process</a>
-      <a routerLink="/portfolio" id="nav-portfolio">Portfolio</a>
-      <a routerLink="/pricing" id="nav-pricing">Pricing</a>
-      <a routerLink="/about" id="nav-about">About</a>
-      <a routerLink="/contact" class="nav-cta" id="nav-contact">Contact Us</a>
-    </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      @for (link of navLinks; track link.path) {
+      <li>
+        <a [routerLink]="link.path" routerLinkActive="active" class="nav-link">{{ link.label }}</a>
+      </li>
+      }
+    </ul>
+
+    <!-- Desktop CTA -->
+    <a routerLink="/contact" class="btn-nav-cta" (click)="closeMenu()">Start a Project →</a>
+
+    <!-- Hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen()">
+    <ul class="mobile-links">
+      @for (link of navLinks; track link.path) {
+      <li>
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          class="mobile-link"
+          (click)="closeMenu()"
+          >{{ link.label }}</a
+        >
+      </li>
+      }
+    </ul>
+    <a routerLink="/contact" class="btn-mobile-cta" (click)="closeMenu()">Start a Project →</a>
   </div>
 </nav>

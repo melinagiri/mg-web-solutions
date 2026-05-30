@@ -1,80 +1,23 @@
-<!-- ════════════ PROCESS PAGE ════════════ -->
-<div class="process-hero">
-  <div class="section-label">How We Work</div>
-  <h1 class="section-title">Our Process</h1>
-  <p class="section-sub">A simple, transparent process to ensure successful project delivery.</p>
-</div>
+<section id="process" class="process-section">
+  <div class="container">
 
-<div class="process-steps">
-  <div class="steps-grid">
-    <div class="step-row">
-      <div class="step-line">
-        <div class="step-num">1</div>
-      </div>
-      <div class="step-content">
-        <h3>Discovery</h3>
-        <p>
-          We learn about your business, goals, and requirements. This phase involves deep
-          conversations to understand your audience, competition, and what success looks like for
-          you.
-        </p>
-      </div>
+    <div class="section-header fade-in">
+      <span class="section-tag">How We Work</span>
+      <h2>Clear Process.<br>Better Results.</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Every project follows a structured 5-step process to ensure clarity, quality, and on-time delivery.
+      </p>
     </div>
-    <div class="step-row">
-      <div class="step-line">
-        <div class="step-num">2</div>
-      </div>
-      <div class="step-content">
-        <h3>Planning</h3>
-        <p>
-          We analyze, plan and create a strategy tailored to your needs. We define the scope,
-          timeline, technologies, and deliverables so everyone is aligned before work begins.
-        </p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-line">
-        <div class="step-num">3</div>
-      </div>
-      <div class="step-content">
-        <h3>Design</h3>
-        <p>
-          We design wireframes and UI/UX that focus on user experience. You'll see interactive
-          prototypes and have full opportunity for feedback before any development starts.
-        </p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-line">
-        <div class="step-num">4</div>
-      </div>
-      <div class="step-content">
-        <h3>Development</h3>
-        <p>
-          We build your solution with clean code and best practices. We follow agile methodology
-          with regular check-ins and demos so you always know exactly where things stand.
-        </p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-line">
-        <div class="step-num">5</div>
-      </div>
-      <div class="step-content" style="padding-bottom: 0">
-        <h3>Launch & Support</h3>
-        <p>
-          We launch your project and provide ongoing support. Post-launch we monitor performance,
-          fix any issues, and support your team so you can hit the ground running.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="process-cta">
-  <div class="process-cta-text">
-    <h3>Ready to start your project?</h3>
-    <p>We're excited to bring your ideas to life.</p>
+    <div class="process-steps fade-in">
+      <div class="process-step" *ngFor="let step of steps; let i = index">
+        <div class="step-num">{{ step.num }}</div>
+        <span class="step-icon">{{ step.icon }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </div>
+    </div>
+
   </div>
-  <button class="btn btn-primary" routerLink="/contact">Start a Project →</button>
-</div>
+</section>

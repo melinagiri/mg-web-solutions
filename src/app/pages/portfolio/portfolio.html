@@ -1,100 +1,29 @@
-<!-- ════════════ PORTFOLIO PAGE ════════════ -->
-<div class="portfolio-hero">
-  <div class="section-label">Our Work</div>
-  <h1 class="section-title">Projects We're Proud to Have Built</h1>
-  <p class="section-sub">
-    A selection of websites, applications, and digital experiences we've crafted for our clients.
-  </p>
-</div>
+<section id="projects" class="portfolio-section">
+  <div class="container">
 
-<div class="portfolio-filters">
-  <button class="filter-btn active">All</button>
-  <button class="filter-btn">Websites</button>
-  <button class="filter-btn">Web Applications</button>
-  <button class="filter-btn">UI/UX Design</button>
-</div>
+    <div class="section-header fade-in">
+      <span class="section-tag">Recent Work</span>
+      <h2>Projects We've Built</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Real projects delivered — from enterprise systems to digital products.</p>
+    </div>
 
-<div class="portfolio-grid">
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e)">
-      <div class="portfolio-thumb-pattern">🏢</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">Website</div>
-      <div class="portfolio-name">Business Website</div>
-      <div class="portfolio-desc">
-        Corporate website for a consulting firm with lead generation focus.
+    <div class="projects-grid">
+      <div
+        class="project-card fade-in"
+        *ngFor="let project of projects"
+      >
+        <div class="project-top">
+          <span class="project-icon">{{ project.icon }}</span>
+          <span class="project-tag">{{ project.tag }}</span>
+        </div>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="project-stack">
+          <span class="stack-tag" *ngFor="let tech of project.stack">{{ tech }}</span>
+        </div>
       </div>
-      <a class="portfolio-link">View Case Study →</a>
     </div>
-  </div>
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0f3460, #533483)">
-      <div class="portfolio-thumb-pattern">🛒</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">Website</div>
-      <div class="portfolio-name">E-commerce Website</div>
-      <div class="portfolio-desc">
-        Online store with product management and reporting dashboards.
-      </div>
-      <a class="portfolio-link">View Case Study →</a>
-    </div>
-  </div>
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #1b4332, #2d6a4f)">
-      <div class="portfolio-thumb-pattern">📊</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">Web Application</div>
-      <div class="portfolio-name">Dashboard System</div>
-      <div class="portfolio-desc">Custom dashboard for data management and reporting.</div>
-      <a class="portfolio-link">View Case Study →</a>
-    </div>
-  </div>
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #3d0066, #7b2d8b)">
-      <div class="portfolio-thumb-pattern">📅</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">Web Application</div>
-      <div class="portfolio-name">Booking System</div>
-      <div class="portfolio-desc">Appointment booking platform for a healthcare provider.</div>
-      <a class="portfolio-link">View Case Study →</a>
-    </div>
-  </div>
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #7f1d1d, #c0392b)">
-      <div class="portfolio-thumb-pattern">🎓</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">Website</div>
-      <div class="portfolio-name">Education Portal</div>
-      <div class="portfolio-desc">Learning management system for an educational institution.</div>
-      <a class="portfolio-link">View Case Study →</a>
-    </div>
-  </div>
-  <div class="portfolio-card">
-    <div class="portfolio-thumb" style="background: linear-gradient(135deg, #1a3a1a, #2563ff)">
-      <div class="portfolio-thumb-pattern">🎨</div>
-      <div class="portfolio-thumb-overlay">View Case Study →</div>
-    </div>
-    <div class="portfolio-body">
-      <div class="portfolio-cat">UI/UX Design</div>
-      <div class="portfolio-name">Brand & Design System</div>
-      <div class="portfolio-desc">
-        Complete visual identity and design system for a tech startup.
-      </div>
-      <a class="portfolio-link">View Case Study →</a>
-    </div>
-  </div>
-</div>
 
-<div class="portfolio-more">
-  <button class="btn btn-outline">View More Projects</button>
-</div>
+  </div>
+</section>

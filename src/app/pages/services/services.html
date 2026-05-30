@@ -1,73 +1,29 @@
-<!-- ════════════ SERVICES PAGE ════════════ -->
-<div class="services-hero">
-  <div class="section-label">What We Offer</div>
-  <h1 class="section-title">Our Services</h1>
-  <p class="section-sub">We provide end-to-end digital solutions to help your business grow.</p>
-</div>
+<section id="services" class="services-section">
+  <div class="container">
 
-<div class="services-grid">
-  <div class="service-card">
-    <div class="service-icon">🌐</div>
-    <div class="service-title">Websites</div>
-    <div class="service-desc">
-      Professional and responsive websites that help you build trust and attract more customers.
-      From landing pages to full corporate sites.
+    <div class="services-intro fade-in">
+      <div>
+        <span class="section-tag">What We Build</span>
+        <h2>Services Designed<br>to Deliver Growth</h2>
+        <div class="divider"></div>
+      </div>
+      <p class="section-desc">
+        Every engagement starts with understanding your business — then we build the right solution.
+      </p>
     </div>
-    <div class="service-tags">
-      <span class="tag">Business Websites</span>
-      <span class="tag">Landing Pages</span>
-      <span class="tag">Portfolio Websites</span>
-      <span class="tag">E-commerce</span>
-    </div>
-  </div>
-  <div class="service-card">
-    <div class="service-icon">⚙️</div>
-    <div class="service-title">Web Applications</div>
-    <div class="service-desc">
-      Custom web applications that streamline operations and improve productivity with robust
-      backend systems and intuitive interfaces.
-    </div>
-    <div class="service-tags">
-      <span class="tag">Dashboard Systems</span>
-      <span class="tag">Booking Systems</span>
-      <span class="tag">Management Systems</span>
-      <span class="tag">Custom Web Apps</span>
-    </div>
-  </div>
-  <div class="service-card">
-    <div class="service-icon">🎨</div>
-    <div class="service-title">UI/UX Design</div>
-    <div class="service-desc">
-      Human-focused design that makes your product easy to use and visually appealing. We create
-      delightful digital experiences.
-    </div>
-    <div class="service-tags">
-      <span class="tag">Wireframes & Prototypes</span>
-      <span class="tag">User Flow</span>
-      <span class="tag">Interface Design</span>
-      <span class="tag">Design Systems</span>
-    </div>
-  </div>
-  <div class="service-card">
-    <div class="service-icon">💡</div>
-    <div class="service-title">Digital Solutions</div>
-    <div class="service-desc">
-      End-to-end digital solutions tailored to your business challenges. From ERP systems to custom
-      API integrations.
-    </div>
-    <div class="service-tags">
-      <span class="tag">Process Automation</span>
-      <span class="tag">ERP & CRM Solutions</span>
-      <span class="tag">API Integrations</span>
-      <span class="tag">Custom Features</span>
-    </div>
-  </div>
-</div>
 
-<div class="services-cta">
-  <div>
-    <p>Not sure what you need?</p>
-    <span>Let's discuss your idea and find the right solution.</span>
+    <div class="services-grid">
+      <div
+        class="service-card fade-in"
+        *ngFor="let service of services"
+      >
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <ul class="service-features">
+          <li *ngFor="let feature of service.features">{{ feature }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <button class="btn btn-primary" routerLink="/contact">Start a Project →</button>
-</div>
+</section>
