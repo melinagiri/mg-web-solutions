@@ -1,0 +1,21 @@
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 64px clamp(20px,5vw,80px) 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand .logo-box { margin-bottom: 16px; display: inline-flex; }
+  .footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; margin-top: 12px; }
+  .footer-col h4 { font-family: 'Syne', sans-serif; font-size: 0.875rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; cursor: pointer; transition: color var(--transition); }
+  .footer-col a:hover { color: rgba(255,255,255,0.85); }
+  .footer-social { display: flex; gap: 12px; margin-top: 24px; }
+  .social-btn {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); font-size: 0.9rem; cursor: pointer;
+    transition: all var(--transition); text-decoration: none;
+  }
+  .social-btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }

@@ -1,0 +1,124 @@
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(245, 244, 240, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(20px, 5vw, 80px);
+  transition: background var(--transition);
+}
+nav.dark {
+  background: rgba(10, 10, 15, 0.9);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.nav-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-box {
+  width: 36px;
+  height: 36px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.logo-text {
+  color: var(--ink);
+}
+nav.dark .logo-text {
+  color: var(--white);
+}
+.logo-sub {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition:
+    background var(--transition),
+    color var(--transition);
+  cursor: pointer;
+}
+nav.dark .nav-links a {
+  color: rgba(255, 255, 255, 0.75);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(37, 99, 255, 0.1);
+  color: var(--accent);
+}
+nav.dark .nav-links a:hover,
+nav.dark .nav-links a.active {
+  background: rgba(37, 99, 255, 0.2);
+  color: #60a5fa;
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: white !important;
+  padding: 10px 22px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  transition:
+    background var(--transition),
+    transform var(--transition) !important;
+}
+.nav-cta:hover {
+  background: var(--accent-2) !important;
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

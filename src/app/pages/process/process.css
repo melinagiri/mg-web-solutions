@@ -1,0 +1,47 @@
+  /* ── PROCESS ── */
+  .process-hero {
+    background: linear-gradient(135deg, var(--ink-2) 0%, var(--ink) 100%);
+    color: white; text-align: center;
+    padding: clamp(60px,10vh,100px) clamp(20px,5vw,80px) 60px;
+  }
+  .process-hero .section-title { color: white; margin: 0 auto 16px; max-width: 600px; }
+  .process-hero .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto; }
+  .process-hero .section-label { color: var(--gold); }
+
+  .process-steps {
+    background: var(--surface);
+    padding: clamp(60px,8vh,100px) clamp(20px,5vw,80px);
+  }
+  .steps-grid { display: flex; flex-direction: column; gap: 0; max-width: 900px; margin: 0 auto; }
+  .step-row {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 0 40px; position: relative;
+  }
+  .step-row:not(:last-child) .step-line::after {
+    content: ''; position: absolute; left: 39px; top: 80px; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .step-line { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .step-num {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--accent); color: white;
+    font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; box-shadow: 0 8px 30px rgba(37,99,255,0.3);
+  }
+  .step-content {
+    padding: 16px 0 60px;
+  }
+  .step-content h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 10px; color: var(--ink);
+  }
+  .step-content p { font-size: 1rem; color: var(--muted); line-height: 1.65; }
+
+  .process-cta {
+    background: var(--ink); display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 24px;
+    padding: 60px clamp(20px,5vw,80px);
+  }
+  .process-cta-text h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; color: white; margin-bottom: 6px; }
+  .process-cta-text p { color: rgba(255,255,255,0.5); }
