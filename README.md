@@ -1,59 +1,85 @@
-# MgWebSolutions
+# Melina Giri Portfolio — Angular 17
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+A full Angular 17 conversion of the original single-file portfolio site.
 
-## Development server
+## Project Structure
 
-To start a local development server, run:
+```
+src/
+├── index.html                  ← Meta tags, gtag, LD+JSON, font links
+├── main.ts                     ← bootstrapApplication (standalone)
+├── styles.css                  ← All 1790 lines of global CSS
+└── app/
+    ├── app.component.*         ← Root shell, mounts all sections
+    ├── directives/
+    │   ├── fade-in.directive.ts    ← Per-element scroll reveal
+    │   └── tilt.directive.ts       ← 3D hover tilt on cards
+    ├── models/
+    │   └── project.model.ts        ← ProjectSlide, ProjectDetail, ContactForm
+    ├── services/
+    │   ├── theme.service.ts        ← Dark/light toggle + localStorage
+    │   ├── modal.service.ts        ← Signal-based modal open/close
+    │   ├── contact.service.ts      ← EmailJS wrapper
+    │   ├── projects.service.ts     ← All project data
+    │   └── scroll-animation.service.ts  ← Global IntersectionObserver
+    └── components/
+        ├── nav/          ← Fixed nav, scroll-spy, hamburger menu, theme btn
+        ├── hero/         ← Animated hexagon SVG + CTA
+        ├── stats/        ← Animated counters (IntersectionObserver)
+        ├── about/        ← Why-MG card with tilt effect
+        ├── services/     ← 3 service cards with mini app mockups + tilt
+        ├── pricing/      ← 3 pricing tiers with tilt
+        ├── process/      ← 5-step process grid
+        ├── experience/   ← Work history cards (Shakta, CloudFactory, CITYLAB)
+        ├── projects/     ← Interactive project slider with live screen mockups
+        ├── contact/      ← Two-way bound form + EmailJS submit
+        ├── footer/       ← Footer links + dynamic year
+        └── modal/        ← Full case-study modal, signal-driven
+```
+
+## Setup
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200
 
-## Code scaffolding
+## EmailJS Configuration
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Open `src/app/services/contact.service.ts` and replace:
 
-```bash
-ng generate component component-name
+```ts
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Steps:
+1. Sign up at https://www.emailjs.com (free)
+2. Add an Email Service (Gmail) → copy Service ID
+3. Create a template with variables: `{{from_name}}`, `{{from_email}}`, `{{service}}`, `{{message}}`
+4. Go to Account → copy your Public Key
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Production Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Output goes to `dist/melinagiri-portfolio/`.
 
-## Running unit tests
+## Angular Patterns Used
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Pattern | Where |
+|---|---|
+| Standalone components (no NgModule) | Every component |
+| Angular Signals | `ModalService.activeProject` |
+| `@HostListener` | NavComponent (scroll/resize/keydown), ModalComponent (Escape) |
+| `[(ngModel)]` two-way binding | ContactComponent form fields |
+| `*ngFor` / `*ngIf` / `[ngClass]` | Projects slider, Modal, About |
+| Custom attribute directives | `TiltDirective`, `FadeInDirective` |
+| `IntersectionObserver` | StatsComponent (counters), ScrollAnimationService (fade-ins) |
+| Dependency injection | All services via constructor |
+| `AfterViewInit` | AppComponent → init scroll animations |
