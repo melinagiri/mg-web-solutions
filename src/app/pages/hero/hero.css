@@ -3,20 +3,17 @@
    ═══════════════════════════════════════════════════════════ */
 #hero{
   position:relative;
-
-  height:310px;
-  min-height:310px;
-
+  height:380px;
+  min-height:380px;
   display:flex;
   align-items:center;
-  
   overflow:hidden;
 
   background-color:#080604;
   background-image:url('/assets/hero-mg-premium.png');
+  background-position: right 40% top 65%;
   background-repeat:no-repeat;
-  background-size:contain;
-  background-position:right center;
+  background-size:cover;
 
   padding:0 6%;
 }
@@ -47,8 +44,6 @@
   position:relative;
   z-index:2;
   max-width:520px;
-
-  margin-top:-22px;
 }
 
 @keyframes heroSlideIn{
@@ -91,7 +86,7 @@
    ═══════════════════════════════════════════════════════════ */
 
 .hero-content h1{
-  font-family:'Cormorant Garamond',Georgia,serif;
+  font-family:'Cormorant Garamond';
 
   font-size:clamp(2.6rem,3.7vw,4.1rem);
 
@@ -101,7 +96,7 @@
 
   color:#fff;
 
-  margin:0 0 .4rem;
+  margin:0 0 1rem;
 
   animation:heroSlideIn .7s .1s ease both;
 }
@@ -119,7 +114,7 @@
   align-items:center;
   gap:.55rem;
 
-  margin-bottom:.7rem;
+  margin-bottom:1rem;
 
   animation:heroSlideIn .7s .15s ease both;
 }
@@ -167,7 +162,7 @@
 
   max-width:420px;
 
-  margin:0 0 .55rem;
+  margin:0 0 1rem;
 
   animation:heroSlideIn .7s .2s ease both;
 }
@@ -181,7 +176,6 @@
   align-items:center;
   gap:.6rem;
   flex-wrap:wrap;
-  margin-bottom:-25px;
   animation:heroSlideIn .7s .28s ease both;
 }
 
