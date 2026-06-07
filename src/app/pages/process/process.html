@@ -1,23 +1,41 @@
-<section id="process" class="process-section">
-  <div class="container">
-
-    <div class="section-header fade-in">
-      <span class="section-tag">How We Work</span>
-      <h2>Clear Process.<br>Better Results.</h2>
-      <div class="divider"></div>
-      <p class="section-desc">
-        Every project follows a structured 5-step process to ensure clarity, quality, and on-time delivery.
-      </p>
+<!-- PROCESS -->
+<section id="process" aria-label="Our process">
+  <div class="process-header fade-in">
+    <div class="section-label"><div class="label-line"></div><span class="label-text">How We Work</span></div>
+    <h2>Clear Process.<br><em>Better Results.</em></h2>
+    <div class="red-divider"></div>
+    <p class="section-desc">Every project follows a structured 5-step process designed for clarity, quality, and on-time delivery.</p>
+  </div>
+  <div class="process-steps fade-in" role="list">
+    <div class="process-step" role="listitem">
+      <div class="step-num-wrap"><span class="step-num">01</span></div>
+      <span class="step-icon" aria-hidden="true">💡</span>
+      <h3>Share Your Idea</h3>
+      <p>Tell us about your business goals, your audience, and what success looks like for this project.</p>
     </div>
-
-    <div class="process-steps fade-in">
-      <div class="process-step" *ngFor="let step of steps; let i = index">
-        <div class="step-num">{{ step.num }}</div>
-        <span class="step-icon">{{ step.icon }}</span>
-        <h3>{{ step.title }}</h3>
-        <p>{{ step.description }}</p>
-      </div>
+    <div class="process-step" role="listitem">
+      <div class="step-num-wrap"><span class="step-num">02</span></div>
+      <span class="step-icon" aria-hidden="true">🔍</span>
+      <h3>Project Discovery</h3>
+      <p>We dig into your users, competitors, and direction — so we build the right thing, not just any thing.</p>
     </div>
-
+    <div class="process-step" role="listitem">
+      <div class="step-num-wrap"><span class="step-num">03</span></div>
+      <span class="step-icon" aria-hidden="true">📋</span>
+      <h3>Planning &amp; Strategy</h3>
+      <p>Features, architecture, design approach, and timeline are agreed before a single line of code is written.</p>
+    </div>
+    <div class="process-step" role="listitem">
+      <div class="step-num-wrap"><span class="step-num">04</span></div>
+      <span class="step-icon" aria-hidden="true">🛠️</span>
+      <h3>Design &amp; Build</h3>
+      <p>We craft a modern digital experience with performance, usability, and your business goals at the center.</p>
+    </div>
+    <div class="process-step" role="listitem">
+      <div class="step-num-wrap"><span class="step-num">05</span></div>
+      <span class="step-icon" aria-hidden="true">🚀</span>
+      <h3>Launch &amp; Support</h3>
+      <p>Your project goes live with thorough testing, training, and ongoing support included.</p>
+    </div>
   </div>
 </section>

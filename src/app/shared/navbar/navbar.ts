@@ -1,35 +1,69 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  styleUrls: ['./navbar.css']
 })
-export class Navbar {
-  isScrolled = signal(false);
-  menuOpen = signal(false);
+export class Navbar implements OnInit, OnDestroy {
+  navIsOpen = false;
+  isScrolled = false;
 
-  navLinks = [
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Pricing', path: '/pricing' },
-    { label: 'Process', path: '/process' },
-    { label: 'Portfolio', path: '/portfolio' },
-  ];
+  private navCloseTimer: ReturnType<typeof setTimeout> | null = null;
+
+  constructor(public themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    this.themeService.init();
+  }
+
+  ngOnDestroy(): void {
+    if (this.navCloseTimer) clearTimeout(this.navCloseTimer);
+  }
+
+  get themeIcon(): string {
+    return this.themeService.isLight ? '☀️' : '🌙';
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggle();
+  }
+
+  toggleNav(): void {
+    this.navIsOpen ? this.closeNav() : this.openNav();
+  }
+
+  openNav(): void {
+    if (this.navIsOpen) return;
+    this.navIsOpen = true;
+    if (this.navCloseTimer) clearTimeout(this.navCloseTimer);
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeNav(): void {
+    if (!this.navIsOpen) return;
+    this.navIsOpen = false;
+    document.body.style.overflow = '';
+    // Let the slide-out animation finish before hiding
+    this.navCloseTimer = setTimeout(() => {}, 520);
+  }
 
   @HostListener('window:scroll')
-  onScroll() {
-    this.isScrolled.set(window.scrollY > 40);
+  onScroll(): void {
+    this.isScrolled = window.scrollY > 50;
   }
 
-  toggleMenu() {
-    this.menuOpen.update((v) => !v);
+  @HostListener('window:resize')
+  onResize(): void {
+    if (window.innerWidth > 900) this.closeNav();
   }
 
-  closeMenu() {
-    this.menuOpen.set(false);
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(e: KeyboardEvent): void {
+    if (e.key === 'Escape') this.closeNav();
   }
 }

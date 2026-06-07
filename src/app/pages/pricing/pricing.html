@@ -1,40 +1,53 @@
-<section id="pricing" class="pricing-section">
-  <div class="container">
-
-    <div class="section-header fade-in">
-      <span class="section-tag">Investment</span>
-      <h2>Transparent Pricing.<br>No Surprises.</h2>
-      <div class="divider"></div>
+<!-- PRICING -->
+<section id="pricing" aria-label="Pricing">
+  <div class="pricing-header fade-in">
+    <div class="section-label"><div class="label-line"></div><span class="label-text">Investment</span></div>
+    <h2>Transparent Pricing.<br>No <em>Surprises.</em></h2>
+    <div class="red-divider"></div>
+    <p class="section-desc">All projects begin with a free consultation to scope your needs accurately.</p>
+  </div>
+  <div class="pricing-grid fade-in">
+    <div class="pricing-card" [appTilt]="[5, 4]">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-amount">NPR 15k –<span> 25k</span></div>
+      <div class="pricing-best">Best for small businesses &amp; startups</div>
+      <ul class="pricing-features">
+        <li><span class="check" aria-hidden="true">✓</span> Modern landing page</li>
+        <li><span class="check" aria-hidden="true">✓</span> Mobile responsive</li>
+        <li><span class="check" aria-hidden="true">✓</span> Performance optimized</li>
+        <li><span class="check" aria-hidden="true">✓</span> Contact &amp; inquiry form</li>
+        <li><span class="check" aria-hidden="true">✓</span> Basic SEO setup</li>
+      </ul>
+      <a href="https://forms.gle/FLViRjhekjbE1D7LA" target="_blank" class="pricing-cta outline" rel="noopener">Get Started</a>
     </div>
-
-    <div class="pricing-grid fade-in">
-      <div
-        class="pricing-card"
-        *ngFor="let plan of plans"
-        [class.featured]="plan.featured"
-      >
-        <div class="popular-badge" *ngIf="plan.featured">MOST POPULAR</div>
-        <div class="pricing-tier">{{ plan.tier }}</div>
-        <div class="pricing-amount">
-          {{ plan.amount }}<span>{{ plan.amountAccent }}</span>
-        </div>
-        <div class="pricing-best">{{ plan.bestFor }}</div>
-
-        <ul class="pricing-features">
-          <li *ngFor="let feature of plan.features">
-            <span class="check">✓</span> {{ feature }}
-          </li>
-        </ul>
-
-        <a
-          [href]="plan.ctaLink"
-          target="_blank"
-          class="pricing-cta"
-          [class.outline]="plan.ctaStyle === 'outline'"
-          [class.solid]="plan.ctaStyle === 'solid'"
-        >{{ plan.ctaLabel }}</a>
-      </div>
+    <div class="pricing-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="pricing-tier">Professional</div>
+      <div class="pricing-amount">NPR 25k –<span> 50k</span></div>
+      <div class="pricing-best">Best for growing businesses</div>
+      <ul class="pricing-features">
+        <li><span class="check" aria-hidden="true">✓</span> Multi-page website</li>
+        <li><span class="check" aria-hidden="true">✓</span> Full SEO &amp; performance setup</li>
+        <li><span class="check" aria-hidden="true">✓</span> Business branding integration</li>
+        <li><span class="check" aria-hidden="true">✓</span> Conversion-focused design</li>
+        <li><span class="check" aria-hidden="true">✓</span> CMS / content management</li>
+        <li><span class="check" aria-hidden="true">✓</span> 1 month post-launch support</li>
+      </ul>
+      <a href="https://forms.gle/FLViRjhekjbE1D7LA" target="_blank" class="pricing-cta solid" rel="noopener">Start This Plan</a>
     </div>
-
+    <div class="pricing-card" [appTilt]="[5, 4]">
+      <div class="pricing-tier">Enterprise / App</div>
+      <div class="pricing-amount">NPR 50k<span>+</span></div>
+      <div class="pricing-best">Web applications &amp; complex systems</div>
+      <ul class="pricing-features">
+        <li><span class="check" aria-hidden="true">✓</span> Custom web application</li>
+        <li><span class="check" aria-hidden="true">✓</span> Full-stack .NET + Angular</li>
+        <li><span class="check" aria-hidden="true">✓</span> Database design &amp; optimization</li>
+        <li><span class="check" aria-hidden="true">✓</span> REST API development</li>
+        <li><span class="check" aria-hidden="true">✓</span> Auth, roles &amp; permissions</li>
+        <li><span class="check" aria-hidden="true">✓</span> 3 months post-launch support</li>
+      </ul>
+      <a href="https://forms.gle/FLViRjhekjbE1D7LA" target="_blank" class="pricing-cta outline" rel="noopener">Discuss Your Project</a>
+    </div>
   </div>
 </section>

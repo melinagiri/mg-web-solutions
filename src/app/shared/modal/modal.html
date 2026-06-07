@@ -1,0 +1,61 @@
+<div
+  class="modal-overlay"
+  [class.open]="isOpen"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalProjectTitle"
+  (click)="closeOnOverlay($event)"
+>
+  <div class="modal-box" tabindex="-1" *ngIf="project">
+
+    <div class="modal-header">
+      <div class="modal-title-group">
+        <div class="modal-tag-label">{{ project.tag }}</div>
+        <h3 id="modalProjectTitle">{{ project.title }}</h3>
+      </div>
+      <button class="modal-close" (click)="close()" aria-label="Close project details">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="modal-role-grid" *ngIf="project.role_items.length">
+        <div class="modal-role-item" *ngFor="let item of project.role_items">
+          <div class="modal-role-item-label">{{ item.label }}</div>
+          <div class="modal-role-item-val">{{ item.val }}</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="modal-section-title">Overview</div>
+        <p class="modal-text">{{ project.overview }}</p>
+      </div>
+
+      <div>
+        <div class="modal-section-title">Technologies</div>
+        <div class="modal-tags">
+          <span class="modal-tag-chip" *ngFor="let tech of project.tech">{{ tech }}</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="modal-section-title">My Role</div>
+        <p class="modal-text">{{ project.role }}</p>
+      </div>
+
+      <div>
+        <div class="modal-section-title">Key Challenges</div>
+        <p class="modal-text">{{ project.challenges }}</p>
+      </div>
+
+      <div>
+        <div class="modal-section-title">Outcomes</div>
+        <div class="modal-outcomes">
+          <div class="modal-outcome-item" *ngFor="let outcome of project.outcomes">
+            {{ outcome }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

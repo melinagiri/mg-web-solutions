@@ -1,5 +1,13 @@
+<!-- Fixed navigation — always visible across all routes -->
 <app-navbar></app-navbar>
+
+<!-- Router renders the matched route component here -->
 <main>
   <router-outlet></router-outlet>
 </main>
+
+<!-- Footer — always visible across all routes -->
 <app-footer></app-footer>
+
+<!-- Global modal overlay — rendered at root so it overlays everything -->
+<app-modal></app-modal>

@@ -1,88 +1,109 @@
-<section id="contact" class="contact-section">
-  <div class="container">
-
-    <div class="section-header fade-in">
-      <span class="section-tag">Get In Touch</span>
-      <h2>Ready to Build<br>Something Great?</h2>
-      <div class="divider"></div>
+<section id="contact" aria-label="Contact">
+  <div class="contact-header-row fade-in">
+    <div>
+      <div class="section-label">
+        <div class="label-line"></div>
+        <span class="label-text">Get In Touch</span>
+      </div>
+      <h2>Ready to Build<br>Something <em>Great?</em></h2>
+      <div class="red-divider"></div>
       <p class="section-desc">
-        Tell us about your project and we'll respond within 24 hours. No pressure, just a conversation.
+        Tell us about your project. We'll respond within 24 hours — no pressure, just a conversation.
       </p>
     </div>
-
-    <div class="contact-grid fade-in">
-
-      <!-- Left: Info -->
-      <div class="contact-info">
-        <h3>Let's start with a conversation.</h3>
-        <p>Whether you have a fully formed idea or just a direction — we'd love to hear about it. We work with businesses across Nepal and worldwide.</p>
-
-        <div class="contact-links">
-          <a
-            *ngFor="let link of contactLinks"
-            [href]="link.href"
-            [target]="isExternalLink(link.href) ? '_blank' : '_self'"
-            class="contact-link"
-          >
-            <div class="cl-icon">{{ link.icon }}</div>
-            <div class="cl-text">
-              <strong>{{ link.label }}</strong>
-              <span>{{ link.sublabel }}</span>
-            </div>
-            <div class="cl-arrow">→</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right: Form -->
-      <div class="contact-form-wrap">
-        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Your Name *</label>
-              <input
-                type="text"
-                placeholder="Aarav Sharma"
-                formControlName="name"
-              />
-            </div>
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input
-                type="email"
-                placeholder="you@company.com"
-                formControlName="email"
-              />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>What are you looking for?</label>
-            <select formControlName="service">
-              <option value="">Select a service</option>
-              <option
-                *ngFor="let opt of serviceOptions"
-                [value]="opt.value"
-              >{{ opt.label }}</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Tell us about your project</label>
-            <textarea
-              placeholder="Describe your business, goals, and what you'd like to build..."
-              formControlName="message"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="form-submit">
-            Send Message ✦
-          </button>
-
-        </form>
-      </div>
-
+    <div class="contact-trust-bar">
+      <div class="ct-indicator"><div class="ct-dot"></div>Free consultation</div>
+      <div class="ct-indicator"><div class="ct-dot"></div>Reply within 24 hours</div>
+      <div class="ct-indicator"><div class="ct-dot red"></div>Based in Kathmandu</div>
+      <div class="ct-indicator"><div class="ct-dot red"></div>Available worldwide</div>
     </div>
+  </div>
+
+  <div class="contact-grid fade-in">
+
+    <!-- Contact info -->
+    <div class="contact-info">
+      <h3>Let's start with a conversation.</h3>
+      <p>Whether you have a fully formed idea or just a direction — we'd love to hear about it.
+         We work with businesses across Nepal and worldwide.</p>
+      <div class="contact-links">
+        <a href="mailto:contact@melinagiri.com.np" class="contact-link">
+          <div class="cl-icon" aria-hidden="true">✉️</div>
+          <div class="cl-text">
+            <strong>contact&#64;melinagiri.com.np</strong>
+            <span>Replies within 24 hours</span>
+          </div>
+          <div class="cl-arrow" aria-hidden="true">→</div>
+        </a>
+        <a href="https://forms.gle/FLViRjhekjbE1D7LA" target="_blank" rel="noopener" class="contact-link">
+          <div class="cl-icon" aria-hidden="true">📋</div>
+          <div class="cl-text">
+            <strong>Project Inquiry Form</strong>
+            <span>Fill in your project details — 3 minutes</span>
+          </div>
+          <div class="cl-arrow" aria-hidden="true">→</div>
+        </a>
+        <a href="https://www.linkedin.com/in/melinagiri/" target="_blank" rel="noopener" class="contact-link">
+          <div class="cl-icon" aria-hidden="true">💼</div>
+          <div class="cl-text">
+            <strong>LinkedIn</strong>
+            <span>Connect with Er. Melina Giri</span>
+          </div>
+          <div class="cl-arrow" aria-hidden="true">→</div>
+        </a>
+        <a href="https://github.com/melinagiri" target="_blank" rel="noopener" class="contact-link">
+          <div class="cl-icon" aria-hidden="true">💻</div>
+          <div class="cl-text">
+            <strong>GitHub — melinagiri</strong>
+            <span>View code and open-source work</span>
+          </div>
+          <div class="cl-arrow" aria-hidden="true">→</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact form -->
+    <div>
+      <form class="contact-form" (submit)="handleSubmit($event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Your Name *</label>
+            <input id="cf-name" type="text" placeholder="Aarav Sharma"
+                   required autocomplete="name"
+                   [(ngModel)]="name" name="name" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email Address *</label>
+            <input id="cf-email" type="email" placeholder="you@company.com"
+                   required autocomplete="email"
+                   [(ngModel)]="email" name="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-service">What are you looking for?</label>
+          <select id="cf-service" [(ngModel)]="service" name="service">
+            <option value="">Select a service</option>
+            <option>Modern Website (Starter — NPR 15k–25k)</option>
+            <option>Business Website (Professional — NPR 25k–50k)</option>
+            <option>Web Application (Enterprise — NPR 50k+)</option>
+            <option>UI/UX Design</option>
+            <option>Not sure — let's discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-message">Tell us about your project</label>
+          <textarea id="cf-message"
+                    placeholder="Describe your business, goals, and what you'd like to build..."
+                    [(ngModel)]="message" name="message"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" [disabled]="isSubmitting">
+          {{ submitLabel }}
+        </button>
+      </form>
+    </div>
+
   </div>
 </section>

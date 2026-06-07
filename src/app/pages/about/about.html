@@ -1,63 +1,71 @@
-<div class="page-hero reveal">
-  <span class="section-tag">About</span>
-  <h1 class="section-heading">Built by an IT Engineer.<br><span class="accent-text">Driven by Results.</span></h1>
-  <div class="divider-line"></div>
-  <p class="section-desc">Nearly 2 years of professional experience building enterprise applications — now focused on helping businesses build their digital presence.</p>
-</div>
+<section id="about" aria-label="About Er. Melina Giri">
+  <div class="about-two-col fade-in">
 
-<section class="about-grid-section">
-  <div class="about-grid">
-    <!-- Left: Story -->
-    <div class="about-story reveal">
-      <h2 class="about-sub-heading">Who I Am</h2>
-      <p>Hi, I'm <strong>Melina Giri</strong> — a Software Engineer and Full-Stack Developer based in Kathmandu. I hold a Bachelor's in Information Technology from NCIT (PU Scholarship 2018) and am currently pursuing my Master's in IT.</p>
-      <p>MG Web Solutions is my professional practice for delivering <strong>high-quality digital solutions</strong> to businesses of all sizes. Every project starts with understanding your goals, not just your requirements.</p>
-      <p>My philosophy: <strong>Strategy before design. Plan before we build.</strong> This separates websites that simply exist from websites that actually work.</p>
-
-      <h2 class="about-sub-heading" style="margin-top: 2rem;">Technical Skills</h2>
-      <div class="skills-grid">
-        @for (skill of skills; track skill.label) {
-          <span class="tag" [class.tag-blue]="skill.blue" [class.tag-muted]="!skill.blue">
-            {{ skill.label }}
-          </span>
-        }
+    <!-- LEFT -->
+    <div class="about-left">
+      <div class="section-label">
+        <div class="label-line"></div>
+        <span class="label-text">About Me</span>
       </div>
-
-      <div class="about-cta">
-        <a routerLink="/contact" class="btn btn-primary">Start a Project →</a>
-        <a href="mailto:contact@melinagiri.com.np" class="btn btn-outline">contact&#64;melinagiri.com.np</a>
-      </div>
-    </div>
-
-    <!-- Right: Experience -->
-    <div class="about-exp reveal reveal-delay-1">
-      <h2 class="about-sub-heading">Experience</h2>
-      <div class="exp-timeline">
-        @for (exp of experience; track exp.role) {
-          <div class="exp-item">
-            <div class="exp-dot-wrapper">
-              <div class="exp-dot"></div>
-              <div class="exp-line"></div>
-            </div>
-            <div class="exp-content">
-              <div class="exp-period">{{ exp.period }}</div>
-              <h3 class="exp-role">{{ exp.role }}</h3>
-              <div class="exp-company">{{ exp.company }}</div>
-              <p class="exp-desc">{{ exp.desc }}</p>
+      <h2>Building Digital Solutions<br>with <em>Purpose</em></h2>
+      <div class="red-divider"></div>
+      <p class="about-lead">
+        I'm a licensed IT Engineer and the founder of MG Web Solutions. I combine technical
+        expertise with business understanding to build digital solutions that drive real growth.
+      </p>
+      <p class="about-body">
+        From enterprise ERP systems at <strong>Shakta Technology</strong> to data leadership
+        at <strong>CloudFactory</strong> and health tech at <strong>Utopia CITYLAB</strong>
+        — I bring real-world engineering experience to every client project.
+      </p>
+      <a href="#contact" class="btn btn-outline" style="display:inline-flex;margin-top:1.5rem">
+        Know More About Me →
+      </a>
+      <div class="about-photo-frame">
+        <div class="about-photo-inner">
+          <div class="about-photo-placeholder">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="22" r="12" fill="rgba(185,28,28,0.3)" stroke="rgba(185,28,28,0.5)" stroke-width="1.5"/>
+              <path d="M8 52c0-12.15 9.85-22 22-22s22 9.85 22 22" stroke="rgba(185,28,28,0.4)" stroke-width="1.5" fill="none"/>
+            </svg>
+            <div style="font-size:.65rem;color:var(--muted2);text-align:center;margin-top:.5rem;letter-spacing:.06em">
+              Professional<br>Portrait
             </div>
           </div>
-        }
-      </div>
-
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div>
-          <h3 class="edu-title">Education</h3>
-          <p class="edu-item"><strong>MIT</strong> — Central Dept. CSIT (2025–Present)</p>
-          <p class="edu-item"><strong>BE in Information Technology</strong> — NCIT (2018–2024) · GPA 3.18 · PU Scholar</p>
-          <p class="edu-item"><strong>+2 Science</strong> — United Academy, Lalitpur · GPA 3.18</p>
+          <div class="about-photo-accent-line"></div>
         </div>
       </div>
     </div>
+
+    <!-- RIGHT: Why MG card — note: [tilt] (no 'app' prefix) -->
+    <div class="about-right">
+      <div class="why-mg-card" [appTilt]="[10, 8]">
+        <div class="why-mg-label">WHY BUSINESSES CHOOSE MG</div>
+        <div class="why-mg-list">
+          <div class="why-mg-item" *ngFor="let item of whyItems">
+            <div class="why-mg-check">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <polygon points="8,1 15,4.5 15,11.5 8,15 1,11.5 1,4.5"
+                         fill="rgba(185,28,28,0.15)" stroke="rgba(185,28,28,0.5)" stroke-width="1"/>
+                <path d="M5 8l2 2 4-4" stroke="#B91C1C" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="why-mg-title">{{ item.title }}</div>
+              <div class="why-mg-desc">{{ item.desc }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-mg-hex-bg" aria-hidden="true">
+          <svg viewBox="0 0 120 138" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="138">
+            <polygon points="60,4 114,33 114,105 60,134 6,105 6,33"
+                     fill="rgba(185,28,28,0.06)" stroke="rgba(201,168,76,0.12)" stroke-width="2"/>
+            <text x="60" y="82" font-family="Georgia,serif" font-size="38" font-weight="700"
+                  fill="rgba(185,28,28,0.12)" text-anchor="middle">MG</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>

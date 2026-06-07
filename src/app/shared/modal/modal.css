@@ -1,0 +1,47 @@
+/* ═══════════════════════════════════
+   PROJECT MODAL
+   ═══════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;z-index:900;background:rgba(5,5,5,0.85);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(8px)}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--charcoal);border:1px solid var(--border);max-width:800px;width:100%;max-height:88vh;overflow-y:auto;display:flex;flex-direction:column;position:relative;transform:translateY(24px);transition:transform .35s var(--ease-smooth)}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));z-index:1}
+.modal-header{padding:2.25rem 2.5rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:sticky;top:0;z-index:10;background:var(--charcoal);flex-shrink:0}
+.modal-title-group .modal-tag-label{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.modal-title-group h3{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--white);line-height:1.1}
+.modal-close{width:36px;height:36px;background:rgba(185,28,28,0.1);border:1px solid rgba(185,28,28,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--white);font-size:1rem;transition:background .2s;flex-shrink:0}
+.modal-close:hover{background:var(--red);color:#fff}
+.modal-body{padding:2rem 2.5rem 2.5rem;display:flex;flex-direction:column;gap:2rem;overflow-y:auto}
+.modal-section-title{font-size:.67rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem}
+.modal-section-title::before{content:'';width:16px;height:1px;background:var(--gold)}
+.modal-text{font-size:.87rem;color:rgba(250,250,248,0.6);font-weight:300;line-height:1.9}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.modal-tag-chip{background:rgba(185,28,28,0.1);border:1px solid rgba(185,28,28,0.2);color:rgba(220,38,38,.8);padding:.25rem .75rem;font-size:.72rem;font-weight:500;letter-spacing:.03em}
+.modal-role-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.5rem}
+.modal-role-item{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);padding:.6rem .9rem}
+.modal-role-item-label{font-size:.58rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.modal-role-item-val{font-size:.8rem;color:rgba(250,250,248,0.65);font-weight:400}
+.modal-outcomes{display:flex;flex-direction:column;gap:.65rem}
+.modal-outcome-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.86rem;color:rgba(250,250,248,0.6);font-weight:300}
+.modal-outcome-item::before{content:'✓';color:var(--gold);flex-shrink:0;margin-top:.05rem}
+
+[data-theme="light"] .modal-overlay{background:rgba(20,15,10,0.75)}
+[data-theme="light"] .modal-box{background:var(--lt-bg);border-color:rgba(185,28,28,0.15)}
+[data-theme="light"] .modal-header{background:var(--lt-bg);border-bottom-color:rgba(185,28,28,0.12)}
+[data-theme="light"] .modal-title-group h3{color:var(--lt-ink)}
+[data-theme="light"] .modal-close{background:rgba(185,28,28,0.08);border-color:rgba(185,28,28,0.2);color:var(--lt-ink)}
+[data-theme="light"] .modal-text{color:var(--lt-ink2)}
+[data-theme="light"] .modal-role-item{background:rgba(185,28,28,0.04);border-color:rgba(185,28,28,0.12)}
+[data-theme="light"] .modal-role-item-val{color:var(--lt-ink2)}
+[data-theme="light"] .modal-tag-chip{background:rgba(185,28,28,0.07);border-color:rgba(185,28,28,0.18);color:var(--red-deep)}
+[data-theme="light"] .modal-outcome-item{color:var(--lt-ink2)}
+[data-theme="light"] .modal-section-title{color:var(--red-deep)}
+[data-theme="light"] .modal-section-title::before{background:var(--red-deep)}
+
+@media(max-width:900px){
+.modal-box{max-height:92vh}
+.modal-header,.modal-body{padding-left:1.5rem;padding-right:1.5rem}
+.modal-role-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){.modal-overlay{padding:.5rem}}
+@media(max-width:414px){.modal-body{padding-left:1.25rem;padding-right:1.25rem}}

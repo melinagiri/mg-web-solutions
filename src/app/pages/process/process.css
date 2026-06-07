@@ -138,3 +138,37 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ═══════════════════════════════════
+   PROCESS
+   ═══════════════════════════════════ */
+#process{background:var(--near-black)}
+.process-header{text-align:left;max-width:540px;margin:0 0 4.5rem}
+.process-header .red-divider{margin-left:0;margin-right:0}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(201,168,76,0.1);position:relative}
+.process-step{background:var(--near-black);padding:2.5rem 1.75rem 2rem;text-align:left;position:relative;z-index:1;transition:background .3s,transform .25s;overflow:hidden}
+.process-step::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-smooth)}
+.process-step:hover{background:var(--charcoal);transform:translateY(-3px)}
+.process-step:hover::after{transform:scaleX(1)}
+.step-num-wrap{width:48px;height:48px;margin:0 0 1.5rem;background:rgba(185,28,28,0.1);border:1px solid rgba(185,28,28,0.25);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s}
+.process-step:hover .step-num-wrap{background:rgba(185,28,28,0.22);border-color:var(--red)}
+.step-num{font-family:var(--font-head);font-size:.85rem;font-weight:700;color:var(--red);letter-spacing:.04em}
+.step-icon{font-size:1.75rem;display:block;margin-bottom:1rem}
+.process-step h3{font-family:var(--font-head);font-size:1.2rem;font-weight:600;margin-bottom:.55rem;color:var(--white)}
+.process-step p{font-size:.8rem;color:var(--muted);line-height:1.75}
+
+[data-theme="light"] #process{background:var(--lt-bg)}
+[data-theme="light"] .process-step{background:var(--lt-bg);border-color:rgba(185,28,28,0.07)}
+[data-theme="light"] .process-step:hover{background:var(--lt-bg2)}
+[data-theme="light"] .process-step h3{color:var(--lt-ink)}
+[data-theme="light"] .process-step p{color:var(--lt-ink2)}
+
+@media(max-width:900px){
+.process-steps{grid-template-columns:1fr 1fr;gap:1px}
+.process-step:nth-child(5){grid-column:1 / -1}
+}
+@media(max-width:600px){
+.process-step{padding:1.5rem 1.25rem}
+.process-steps{grid-template-columns:1fr 1fr;gap:1px}
+.process-step:nth-child(5){grid-column:1 / -1}
+}

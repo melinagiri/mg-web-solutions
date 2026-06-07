@@ -1,54 +1,97 @@
-<nav class="navbar" [class.scrolled]="isScrolled()">
-  <div class="nav-inner">
-    <!-- Logo -->
-    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
-      <div class="logo-mark">MG</div>
-      <div class="logo-text">
-        <span class="logo-name">MG Web Solutions</span>
-        <span class="logo-sub">WEB SOLUTIONS</span>
-      </div>
-    </a>
+<!-- Mobile nav overlay -->
+<div class="nav-overlay" [class.open]="navIsOpen" (click)="closeNav()"></div>
 
-    <!-- Desktop Links -->
-    <ul class="nav-links">
-      @for (link of navLinks; track link.path) {
-      <li>
-        <a [routerLink]="link.path" routerLinkActive="active" class="nav-link">{{ link.label }}</a>
-      </li>
-      }
-    </ul>
-
-    <!-- Desktop CTA -->
-    <a routerLink="/contact" class="btn-nav-cta" (click)="closeMenu()">Start a Project →</a>
-
-    <!-- Hamburger -->
-    <button
-      class="hamburger"
-      [class.open]="menuOpen()"
-      (click)="toggleMenu()"
-      aria-label="Toggle menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<!-- Mobile nav panel -->
+<div
+  class="mobile-nav-panel"
+  [class.open]="navIsOpen"
+  [class.items-in]="navIsOpen"
+  role="dialog"
+  aria-label="Navigation menu"
+  [attr.aria-hidden]="!navIsOpen"
+  [style.display]="navIsOpen ? 'block' : 'none'"
+>
+  <div class="mobile-nav-inner">
+    <div class="nav-item">
+      <a routerLink="/about"     (click)="closeNav()">About</a>
+    </div>
+    <div class="nav-item">
+      <a routerLink="/services"  (click)="closeNav()">Services</a>
+    </div>
+    <div class="nav-item">
+      <a routerLink="/pricing"   (click)="closeNav()">Pricing</a>
+    </div>
+    <div class="nav-item">
+      <a routerLink="/process"   (click)="closeNav()">Process</a>
+    </div>
+    <div class="nav-item">
+      <a routerLink="/portfolio" (click)="closeNav()">Work</a>
+    </div>
+    <div class="nav-item">
+      <a href="https://forms.gle/FLViRjhekjbE1D7LA"
+         target="_blank" rel="noopener"
+         class="nav-cta-mobile"
+         (click)="closeNav()">Start a Project →</a>
+    </div>
   </div>
+</div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" [class.open]="menuOpen()">
-    <ul class="mobile-links">
-      @for (link of navLinks; track link.path) {
-      <li>
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          class="mobile-link"
-          (click)="closeMenu()"
-          >{{ link.label }}</a
-        >
-      </li>
-      }
-    </ul>
-    <a routerLink="/contact" class="btn-mobile-cta" (click)="closeMenu()">Start a Project →</a>
+<!-- Desktop navbar -->
+<nav id="navbar" [class.scrolled]="isScrolled">
+
+  <!-- Logo → always goes home -->
+  <a routerLink="/" class="nav-logo">
+    <div class="logo-mark">MG</div>
+    <div class="logo-text">MG Web Solutions<small>Kathmandu, Nepal</small></div>
+  </a>
+
+  <ul class="nav-links">
+    <li>
+      <a routerLink="/about"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">About</a>
+    </li>
+    <li>
+      <a routerLink="/services"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">Services</a>
+    </li>
+    <li>
+      <a routerLink="/pricing"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">Pricing</a>
+    </li>
+    <li>
+      <a routerLink="/process"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">Process</a>
+    </li>
+    <li>
+      <a routerLink="/portfolio"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">Work</a>
+    </li>
+    <li>
+      <a routerLink="/contact"
+         class="nav-cta"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: false }">Start a Project</a>
+    </li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="theme-toggle"
+            (click)="toggleTheme()"
+            title="Toggle theme"
+            aria-label="Toggle dark/light mode">
+      {{ themeIcon }}
+    </button>
+    <button class="hamburger"
+            [class.open]="navIsOpen"
+            (click)="toggleNav()"
+            aria-label="Open menu"
+            [attr.aria-expanded]="navIsOpen">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
