@@ -1,59 +1,105 @@
-# MgWebSolutions
+# MG Web Solutions — Angular 17 Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+## Project Structure
 
-## Development server
+```
+src/
+├── index.html
+├── main.ts
+├── styles.css                        ← All global CSS (1790 lines)
+└── app/
+    ├── app.ts                        ← Root component (AppComponent)
+    ├── app.html                      ← Root template
+    ├── app.css
+    ├── app.config.ts                 ← ApplicationConfig (provideAnimations)
+    ├── app.routes.ts                 ← Routes (empty — single page)
+    ├── app.spec.ts
+    │
+    ├── core/
+    │   ├── models/
+    │   │   └── project.model.ts      ← ProjectSlide, ProjectDetail, ContactForm, WhyItem
+    │   ├── services/
+    │   │   ├── theme.service.ts      ← Dark/light toggle + localStorage
+    │   │   ├── modal.service.ts      ← Signal-based modal open/close
+    │   │   ├── contact.service.ts    ← EmailJS wrapper
+    │   │   ├── projects.service.ts   ← All project slide + detail data
+    │   │   └── scroll-animation.service.ts  ← Global IntersectionObserver
+    │   └── directives/
+    │       ├── tilt.directive.ts     ← 3D hover tilt on cards
+    │       └── fade-in.directive.ts  ← Per-element scroll reveal
+    │
+    ├── shared/
+    │   ├── navbar/
+    │   │   ├── navbar.ts             ← Scroll-spy, hamburger, theme toggle
+    │   │   ├── navbar.html
+    │   │   ├── navbar.css
+    │   │   └── navbar.spec.ts
+    │   ├── footer/
+    │   │   ├── footer.ts             ← Dynamic year
+    │   │   ├── footer.html
+    │   │   ├── footer.css
+    │   │   └── footer.spec.ts
+    │   └── modal/
+    │       ├── modal.ts              ← Signal-driven case-study modal
+    │       ├── modal.html
+    │       ├── modal.css
+    │       └── modal.spec.ts (add as needed)
+    │
+    └── pages/
+        ├── hero/       hero.ts / hero.html / hero.css / hero.spec.ts
+        ├── stats/      stats.ts (animated counters)
+        ├── about/      about.ts (TiltDirective on why-MG card)
+        ├── services/   services.ts (TiltDirective on service cards)
+        ├── pricing/    pricing.ts (TiltDirective on pricing cards)
+        ├── process/    process.ts
+        ├── experience/ experience.ts
+        ├── projects/   projects.ts (interactive slider + per-screen mockups)
+        └── contact/    contact.ts ([(ngModel)] + EmailJS form)
+```
 
-To start a local development server, run:
+## Quick Start
 
 ```bash
+npm install
 ng serve
+# → http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## EmailJS Setup
 
-## Code scaffolding
+Edit `src/app/core/services/contact.service.ts`:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```ts
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Template variables: `{{from_name}}`, `{{from_email}}`, `{{service}}`, `{{message}}`
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Run Tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## Production Build
 
 ```bash
-ng e2e
+ng build
+# Output: dist/mg-web-solutions/
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Angular Patterns
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Pattern | Used in |
+|---|---|
+| Standalone components | Every component (no NgModule) |
+| Angular Signals | `ModalService.activeProject` |
+| `@HostListener` | Navbar (scroll/resize/Escape), Modal (Escape) |
+| `[(ngModel)]` two-way binding | Contact form |
+| `*ngFor` / `*ngIf` / `[ngClass]` | About, Projects, Modal |
+| Custom attribute directives | `TiltDirective`, `FadeInDirective` |
+| `IntersectionObserver` | Stats counters, ScrollAnimationService |
+| `ApplicationConfig` + `appConfig` | main.ts bootstrap |
+| `AfterViewInit` | AppComponent → scroll animations |
