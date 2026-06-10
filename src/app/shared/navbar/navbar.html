@@ -13,84 +13,124 @@
 >
   <div class="mobile-nav-inner">
     <div class="nav-item">
-      <a routerLink="/about"     (click)="closeNav()">About</a>
+      <a routerLink="/about" (click)="closeNav()">About</a>
     </div>
     <div class="nav-item">
-      <a routerLink="/services"  (click)="closeNav()">Services</a>
+      <a routerLink="/services" (click)="closeNav()">Services</a>
     </div>
     <div class="nav-item">
-      <a routerLink="/pricing"   (click)="closeNav()">Pricing</a>
+      <a routerLink="/portfolio" (click)="closeNav()">Projects</a>
     </div>
     <div class="nav-item">
-      <a routerLink="/process"   (click)="closeNav()">Process</a>
+      <a routerLink="/process" (click)="closeNav()">Process</a>
     </div>
     <div class="nav-item">
-      <a routerLink="/portfolio" (click)="closeNav()">Work</a>
+      <a routerLink="/contact" (click)="closeNav()">Contact</a>
     </div>
     <div class="nav-item">
-      <a href="https://forms.gle/FLViRjhekjbE1D7LA"
-         target="_blank" rel="noopener"
-         class="nav-cta-mobile"
-         (click)="closeNav()">Start a Project →</a>
+      <a
+        routerLink="/contact"
+        class="nav-cta-mobile"
+        (click)="closeNav()"
+      >
+        Start a Project →
+      </a>
     </div>
   </div>
 </div>
 
 <!-- Desktop navbar -->
 <nav id="navbar" [class.scrolled]="isScrolled">
-
   <!-- Logo → always goes home -->
   <a routerLink="/" class="nav-logo">
-    <div class="logo-mark">MG</div>
-    <div class="logo-text">MG Web Solutions<small>Kathmandu, Nepal</small></div>
+    <img
+      src="assets/logo/mg-logo.png"
+      alt="MG Web Solutions"
+      class="logo-image"
+    />
+  
+    <div class="logo-text">
+      MG Web Solutions
+      <small>Strategy First. Design That Converts.</small>
+    </div>
   </a>
 
   <ul class="nav-links">
     <li>
-      <a routerLink="/about"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">About</a>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
     </li>
     <li>
-      <a routerLink="/services"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">Services</a>
+      <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }"
+        >About</a
+      >
     </li>
     <li>
-      <a routerLink="/pricing"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">Pricing</a>
+      <a
+        routerLink="/services"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+        >Services</a
+      >
     </li>
     <li>
-      <a routerLink="/process"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">Process</a>
+      <a
+        routerLink="/portfolio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        Projects
+      </a>
     </li>
     <li>
-      <a routerLink="/portfolio"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">Work</a>
+      <a
+        routerLink="/process"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+        >Process</a
+      >
     </li>
     <li>
-      <a routerLink="/contact"
-         class="nav-cta"
-         routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: false }">Start a Project</a>
+      <a
+        routerLink="/contact"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        Contact
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/contact"
+        class="nav-cta"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+        >Start a Project <span>→</span></a
+      >
     </li>
   </ul>
 
   <div class="nav-right">
-    <button class="theme-toggle"
-            (click)="toggleTheme()"
-            title="Toggle theme"
-            aria-label="Toggle dark/light mode">
-      {{ themeIcon }}
+    <button
+      class="theme-toggle"
+      (click)="toggleTheme()"
+      title="Toggle theme"
+      aria-label="Toggle dark/light mode"
+    >
+      <span class="theme-icon">{{ themeIcon }}</span>
     </button>
-    <button class="hamburger"
-            [class.open]="navIsOpen"
-            (click)="toggleNav()"
-            aria-label="Open menu"
-            [attr.aria-expanded]="navIsOpen">
+    <button
+      class="hamburger"
+      [class.open]="navIsOpen"
+      (click)="toggleNav()"
+      aria-label="Open menu"
+      [attr.aria-expanded]="navIsOpen"
+    >
       <span></span><span></span><span></span>
     </button>
   </div>
