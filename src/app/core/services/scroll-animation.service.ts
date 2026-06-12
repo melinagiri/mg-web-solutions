@@ -8,18 +8,22 @@ import { Injectable, OnDestroy } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ScrollAnimationService implements OnDestroy {
   private observer: IntersectionObserver | null = null;
-
+  
   init(): void {
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+    this.observer?.disconnect();
+
+    this.observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
           this.observer?.unobserve(entry.target);
         }
-      });
-    }, { threshold: 0.07 });
+      }),
+      { threshold: 0.1 }
+    );
 
-    document.querySelectorAll('.fade-in').forEach(el => this.observer!.observe(el));
+    document.querySelectorAll('.fade-in:not(.visible)')
+      .forEach(el => this.observer!.observe(el));
   }
 
   /** Call after dynamic content is added to pick up new .fade-in elements. */

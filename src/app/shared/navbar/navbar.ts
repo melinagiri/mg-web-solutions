@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,23 @@ import { ThemeService } from '../../core/services/theme.service';
 export class Navbar implements OnInit, OnDestroy {
   navIsOpen = false;
   isScrolled = false;
-
+  isHome = false;
+  
   private navCloseTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(public themeService: ThemeService) {}
-
+  constructor(
+    public themeService: ThemeService,
+    private router: Router
+  ) { 
+    this.router.events
+          .pipe(filter(event => event instanceof NavigationEnd))
+          .subscribe(() => {
+            this.isHome = this.router.url === '/';
+          });
+    
+        this.isHome = this.router.url === '/';
+  }
+  
   ngOnInit(): void {
     this.themeService.init();
   }

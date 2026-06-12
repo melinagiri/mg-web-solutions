@@ -40,7 +40,12 @@
 </div>
 
 <!-- Desktop navbar -->
-<nav id="navbar" [class.scrolled]="isScrolled">
+<nav
+  id="navbar"
+  [class.home-nav]="isHome"
+  [class.inner-nav]="!isHome"
+  [class.scrolled]="isScrolled"
+  >
   <!-- Logo → always goes home -->
   <a routerLink="/" class="nav-logo">
     <img
@@ -116,14 +121,14 @@
   </ul>
 
   <div class="nav-right">
-    <button
+    <!--<button
       class="theme-toggle"
       (click)="toggleTheme()"
       title="Toggle theme"
       aria-label="Toggle dark/light mode"
     >
       <span class="theme-icon">{{ themeIcon }}</span>
-    </button>
+    </button>-->
     <button
       class="hamburger"
       [class.open]="navIsOpen"

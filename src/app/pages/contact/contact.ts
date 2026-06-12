@@ -97,6 +97,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContactService } from '../../core/services/contact.service';
+import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
 
 @Component({
   selector: 'app-contact',
@@ -114,8 +115,15 @@ export class Contact {
   submitLabel  = 'Send Message →';
   isSubmitting = false;
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private scrollAnim: ScrollAnimationService
+  ) { }
 
+  ngAfterViewInit(): void {
+     setTimeout(() => this.scrollAnim.init(), 50);
+  }
+  
   async handleSubmit(e: Event): Promise<void> {
     e.preventDefault();
     if (!this.name.trim() || !this.message.trim()) {

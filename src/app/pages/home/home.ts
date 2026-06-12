@@ -9,14 +9,13 @@ import { Experience } from '../experience/experience';
 import { Portfolio }  from '../portfolio/portfolio';
 import { Contact }    from '../contact/contact';
 import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
+import { Projects } from '../projects/projects';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    Hero, Stats, About, Services,
-    Pricing, Process, Experience,
-    Portfolio, Contact
+    Hero, Stats, About, Services, Process, Contact, Projects
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
