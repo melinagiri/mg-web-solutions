@@ -96,7 +96,7 @@
   );
 
   /* LAYOUT */
-  --section-padding:5.5rem 6%;
+  --section-padding:3rem 6%;
   
   /* EFFECTS */
   --blur-card:10px;
@@ -184,7 +184,7 @@ h2{
   line-height:1.05;
   letter-spacing:-0.02em;
   color:var(--white);
-  margin-bottom:.9rem;
+  margin-bottom:.6rem;
 }
 h2 em{
   color:var(--red-deep);
@@ -203,7 +203,7 @@ h2 em{
   height:1px;
   background:var(--gradient-gold);
   filter:brightness(var(--gold-brightness));
-  margin:1.2rem 0 2.6rem;
+  margin:1rem 0 1.8rem;
 }
 .btn{
   display:inline-flex;
@@ -303,3 +303,13 @@ RESPONSIVE BASE
 @media(max-width:414px){section{padding:3.5rem 4%}}
 @media(max-width:375px){section{padding:3rem 4%}}
 @media(max-width:320px){section{padding:2.75rem 3.5%}}
+
+/* ── Layout ── */
+app-root,
+app-services,
+app-about,
+app-projects,
+app-process,
+app-contact {
+  display: block;
+}
