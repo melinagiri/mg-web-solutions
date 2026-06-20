@@ -1,16 +1,15 @@
 <section id="projects" aria-label="Portfolio projects">
-  <div class="projects-section-header fade-in">
+  <div class="projects-section-header">
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
       <div>
-        <div class="section-label"><div class="label-line"></div><span class="label-text">Featured Projects</span></div>
-        <h2>Real Projects.<br><em>Real Impact.</em></h2>
-        <div class="red-divider"></div>
+        <div class="section-label"><span class="label-text">Featured Projects</span></div>
+        <h2>Real Projects. Real Impact</h2>
       </div>
       <a href="#contact" class="ps-view-all" style="align-self:flex-end">View all projects →</a>
     </div>
   </div>
 
-  <div class="ps-slider fade-in">
+  <div class="ps-slider">
     <!-- LEFT: project list -->
     <div class="ps-list">
       <div
@@ -24,15 +23,13 @@
         </div>
         <div class="ps-list-info">
           <div class="ps-list-name">{{ slide.name }}</div>
-          <div class="ps-list-sub">{{ slide.sub.split('·')[0].trim() }}</div>
+          <div class="ps-list-sub">{{ slide.sub }}</div>
         </div>
       </div>
     </div>
 
     <!-- CENTER: preview screen -->
     <div class="ps-preview">
-      <button class="ps-arrow ps-arrow-left" (click)="sliderNav(-1)" aria-label="Previous project">&#8592;</button>
-      <button class="ps-arrow ps-arrow-right" (click)="sliderNav(1)" aria-label="Next project">&#8594;</button>
       <div class="ps-screen" [style.opacity]="screenFading ? 0 : 1" style="transition:opacity .2s">
         <!-- WashBilling screen -->
         <ng-container *ngIf="current.screen === 'washbilling'">

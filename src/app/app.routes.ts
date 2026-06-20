@@ -32,6 +32,11 @@ export const routes: Routes = [
     title: 'Portfolio – MG Web Solutions',
   },
   {
+    path: 'projects',
+    loadComponent: () => import('./pages/projects/projects').then((m) => m.Projects),
+    title: 'Projects – MG Web Solutions',
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
     title: 'Contact – MG Web Solutions',

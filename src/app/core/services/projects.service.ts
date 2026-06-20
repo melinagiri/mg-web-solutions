@@ -7,189 +7,226 @@ export class ProjectsService {
   getSlides(): ProjectSlide[] {
     return [
       {
-        key: 'washbilling',
-        name: 'WashBilling',
-        sub: 'Water Utility Billing & Management ERP',
-        desc: 'A comprehensive ERP solution for water supply organizations to manage customers, billing, meter readings, accounting, inventory, reports, and communications in one platform. Built with .NET + Angular at Shakta Technology — live in production.',
-        tags: ['.NET', 'Angular', 'MS SQL Server', 'REST API'],
+        key: 'watermark',
+        name: 'Watermark ERP',
+        sub: 'Municipal Water Utility Platform',
+        desc: 'Enterprise platform for municipal water utilities covering customer registration, billing, meter reading, GIS mapping, SMS notifications, reporting, accounting, and operational management.',
+        tags: ['.NET', 'Angular', 'SQL Server', 'GIS'],
         screen: 'washbilling'
-      },
-      {
-        key: 'sbf',
-        name: 'SBF — Smart Bus Fare',
-        sub: 'Public Transport · University Capstone',
-        desc: 'A full-stack digital bus fare platform with QR code passes, Khalti online payment, GPS tracking, and facial emotion feedback. Submitted as BEIT capstone at NCIT (Pokhara University) — Jul 2023.',
-        tags: ['Laravel', 'React', 'MySQL', 'QR', 'GPS', 'Khalti'],
-        screen: 'sbf'
-      },
-      {
-        key: 'haushala',
-        name: 'Haushala',
-        sub: 'Community Wellness · Utopia CITYLAB',
-        desc: 'A community mental wellness platform prototype built during the Utopia CITYLAB program. Daily mood check-ins, resource directory, and urban health research with 15+ participants across Kathmandu.',
-        tags: ['Figma', 'Laravel', 'MySQL', 'User Research'],
-        screen: 'haushala'
       },
       {
         key: 'profiles',
         name: 'Digital Profile System',
-        sub: 'Customer Management · Enterprise',
-        desc: 'Customer data management and profile handling system. Streamlines onboarding and record-keeping for enterprises at scale with role-based access, document management, and comprehensive analytics dashboards.',
-        tags: ['.NET', 'MS SQL Server', 'REST API', 'Angular'],
+        sub: 'Enterprise Customer Management',
+        desc: 'Customer profile and operational data management platform with role-based access, mapping, inventory tracking, reporting, and centralized record management.',
+        tags: ['.NET', 'Angular', 'SQL Server', 'REST API'],
         screen: 'profiles'
       },
       {
-        key: 'infosprout',
-        name: 'InfoSprout',
-        sub: 'Notice Management System · Academic',
-        desc: 'Internal notice and information management system for organizations. Enables structured creation, categorization, and distribution of announcements with department-level targeting and employee acknowledgment tracking.',
-        tags: ['PHP', 'MySQL', 'Bootstrap', 'AJAX'],
-        screen: 'infosprout'
+        key: 'haushala',
+        name: 'Haushala',
+        sub: 'Mental Health Innovation Platform',
+        desc: 'Research-driven mental health venture developed through the Utopia CITYLAB program, backed by extensive user, expert, and stakeholder research.',
+        tags: ['Figma', 'Research', 'UX', 'Innovation'],
+        screen: 'haushala'
+      },
+      {
+        key: 'sbf',
+        name: 'Smart Bus Fare',
+        sub: 'Digital Transportation Platform',
+        desc: 'Full-stack fare management platform featuring online payments, membership management, GPS tracking, QR verification, and emotion-based passenger feedback.',
+        tags: ['Laravel', 'React', 'MySQL', 'GPS'],
+        screen: 'sbf'
+      },
+      {
+        key: 'movierec',
+        name: 'Movie Recommendation System',
+        sub: 'Machine Learning Research Project',
+        desc: 'Python-based recommendation engine implementing collaborative filtering, content-based filtering, and Naive Bayes approaches using the MovieLens dataset.',
+        tags: ['Python', 'Machine Learning', 'Pandas', 'Scikit-Learn'],
+        screen: 'movie-recommendation'
       },
       {
         key: 'skillsprout',
         name: 'SkillSprout',
-        sub: 'Event Management System · Academic',
-        desc: 'Event and workshop management platform for organizing, registering, and tracking skills development events — with registration analytics, capacity management, waitlisting, and attendance export. 312 registrations across 14 events in testing.',
-        tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'AJAX'],
+        sub: 'Social Networking Platform',
+        desc: 'Facebook-inspired social networking and community engagement platform with profiles, posts, comments, media sharing, and user interaction features.',
+        tags: ['PHP', 'MySQL', 'Bootstrap', 'AJAX'],
         screen: 'skillsprout'
+      },
+      {
+        key: 'infosprout',
+        name: 'InfoSprout',
+        sub: 'Birth Registration System',
+        desc: 'Digital birth registration and certificate management platform designed for local government offices and citizen services.',
+        tags: ['PHP', 'MySQL', 'Bootstrap', 'FPDF'],
+        screen: 'infosprout'
       }
     ];
   }
 
   getDetails(): Record<string, ProjectDetail> {
     return {
-      washbilling: {
-        tag: 'Enterprise Platform · Live · Shakta Technology',
-        title: 'WashBilling — Water Utility Management',
+      watermark: {
+        tag: 'Enterprise Platform · Production System',
+        title: 'Watermark ERP (Formerly WashBilling)',
         role_items: [
-          { label: 'Role', val: 'Software Developer, Shakta Technology' },
-          { label: 'Type', val: 'Enterprise Production System' },
-          { label: 'Stack', val: 'Angular · .NET Core · MS SQL Server' },
-          { label: 'Status', val: 'Live in Production' }
+          { label: 'Role', val: 'Full-Stack Software Developer' },
+          { label: 'Type', val: 'Municipal ERP Platform' },
+          { label: 'Stack', val: '.NET · Angular · SQL Server' },
+          { label: 'Status', val: 'Production Deployment' }
         ],
-        overview: 'A comprehensive enterprise-grade water utility management platform built for production use at Shakta Technology. WashBilling handles the full operational lifecycle of a water supply organization — from initial customer registration and meter installation through to monthly billing, payment collection, financial reporting, and regulatory PDF generation. The system serves 41+ active customers across multiple zones and wards in Kuleshwor, Kathmandu, tracking Rs.25,626 in monthly collections.',
-        tech: ['C# / .NET Core', 'Angular', 'MS SQL Server', 'TypeScript', 'REST API', 'Entity Framework', 'PDF Generation', 'GIS Mapping', 'NepaliDate Calendar'],
-        role: 'Software Developer at Shakta Technology. Responsible for full-stack feature development including backend .NET API design, MS SQL Server schema, Angular frontend modules (dashboard, customer registration, bulk meter reading, billing, reports), and PDF report engine.',
-        challenges: 'Designing a billing engine flexible enough to handle variable meter readings, arrears, partial payments, and per-zone tariff structures — while keeping the UI operable by non-technical billing staff. The system also required dual-language support (English and Nepali) with a custom Bikram Sambat calendar implementation, and GIS-linked customer records for spatial zone management.',
+        overview: 'Municipal-scale water utility management platform developed at Shakta Technology to digitize customer registration, meter management, billing, payment tracking, reporting, GIS mapping, SMS communication, and administrative workflows.',
+        tech: ['C#', '.NET', 'Angular', 'SQL Server', 'JWT', 'REST API', 'Leaflet', 'OpenStreetMap'],
+        role: 'Developed APIs, authentication, billing, customer registration, meter reading, reporting, SMS integration, GIS mapping, and database functionality. Independently developed 30+ operational reports and large-scale export modules.',
+        challenges: 'Implementing GIS-based customer mapping, generating large PDF/Excel exports from thousands of records, and building flexible billing workflows for municipal operations.',
         outcomes: [
-          'Production platform actively managing 41+ customers with full billing lifecycle',
-          'Rs.25,626 monthly collection tracked with real-time dashboard',
-          'Bulk meter reading screen processes all customers across zones in a single session',
-          '8+ report types generated as branded PDFs with date/zone/ward filters',
-          'GIS integration allows drawing service areas and locating meters on interactive maps',
-          'Dual English + Nepali UI with Bikram Sambat calendar (BS 2082/83 fiscal year)',
-          'Role-based access with admin, operator, and billing staff permission tiers',
-          'Inventory, transaction, and accounts modules beyond core billing'
+          'Developed 30+ operational reports',
+          'Implemented PDF and Excel exports for large datasets',
+          'Integrated GIS mapping using Leaflet and OpenStreetMap',
+          'Built JWT authentication and role-based access control',
+          'Integrated SMS notification workflows',
+          'Supported municipal operations across multiple wards',
+          'Designed procedures, views, functions, and triggers',
+          'Contributed across the complete SDLC'
         ]
       },
-      sbf: {
-        tag: 'Public Transportation · University Capstone · NCIT / Pokhara University',
-        title: 'SBF — Smart Bus Fare System',
-        role_items: [
-          { label: 'Role', val: 'Backend Development · Database · API · Architecture' },
-          { label: 'Type', val: 'Academic Capstone (BEIT)' },
-          { label: 'Stack', val: 'Laravel · React · MySQL · REST API · QR · GPS' },
-          { label: 'Supervisor', val: 'Er. Rishi K. Marseni, NCIT' }
-        ],
-        overview: 'A full-stack public transportation fare platform submitted as a major capstone project for Bachelor of Engineering in Information Technology at Nepal College of Information Technology (Pokhara University). SBF modernizes the manual, cash-based bus fare system in Nepal through digital subscription passes, QR code verification, online payments via Khalti, GPS-assisted bus tracking, facial emotion-based feedback, and comprehensive management workflows for commuters, bus management committees (BMC), conductors, and administrators.',
-        tech: ['Laravel (PHP)', 'React', 'MySQL', 'REST API', 'QR Code Generation & Scanning', 'GPS Integration', 'Khalti Payment Gateway', 'Face-api.js (Emotion Detection)', 'Tailwind CSS', 'Figma'],
-        role: 'Backend Development — designed and implemented the Laravel REST API, MySQL database schema, fare and membership logic, QR pass generation and verification engine, Khalti payment integration, and overall system architecture.',
-        challenges: 'Designing a membership and fare system flexible enough to handle multiple pass categories (Universal, Sole, Daily/Weekly/Monthly), normal vs. discounted tiers, and automated expiry — while keeping the conductor verification flow fast and reliable in real bus conditions.',
-        outcomes: [
-          'Digital bus pass system with QR code generation and conductor scanning',
-          'Khalti online payment integration for cashless fare collection',
-          'Subscription model: 12 pass types across Normal and Discounted categories',
-          'GPS-enabled bus tracking for real-time commuter updates',
-          'Facial emotion recognition (face-api.js) for automated service feedback',
-          'Loyalty points and rewards system for frequent commuters',
-          'Role-based portals for Commuter, BMC, Staff, and Admin',
-          'Successfully submitted and presented at NCIT (July 2023)'
-        ]
-      },
-      haushala: {
-        tag: 'Community Wellness · Utopia CITYLAB Innovation Program',
-        title: 'Haushala — Community Mental Wellness Platform',
-        role_items: [
-          { label: 'Role', val: 'UI/UX Design · Frontend · Strategy' },
-          { label: 'Type', val: 'Product Prototype' },
-          { label: 'Stack', val: 'Figma · Laravel · MySQL · User Research' },
-          { label: 'Context', val: 'Utopia CITYLAB, Kathmandu' }
-        ],
-        overview: 'A concept platform developed during the Utopia CITYLAB innovation program to encourage daily emotional check-ins and support community wellbeing through accessible digital tools. Haushala ("home" in Nepali) was designed as a safe, culturally appropriate space for urban communities to track mood, access resources, and build healthy habits.',
-        tech: ['Figma', 'UI/UX Design', 'User Research', 'Laravel', 'MySQL', 'PHP', 'Bootstrap'],
-        role: 'Led UI/UX design, product strategy, and user research. Conducted interviews with 15+ participants in Kathmandu. Built the full-stack prototype including database design and frontend implementation.',
-        challenges: 'Designing for a culturally sensitive topic in a local context — ensuring the interface felt approachable and non-clinical while capturing meaningful wellness data. Navigating a tight 3-month timeline from research to functional prototype.',
-        outcomes: [
-          'Functional prototype delivered within 3-month CITYLAB program timeline',
-          'User research conducted with 15+ urban community participants in Kathmandu',
-          'Daily emotional check-in flow with mood, sleep, and stress tracking',
-          'Resource directory linking to local mental health services and support',
-          'Presented as a viable product concept to Utopia CITYLAB stakeholders',
-          'Demonstrated feasibility of culturally-sensitive digital wellness tools in Nepal'
-        ]
-      },
+
       profiles: {
-        tag: 'Enterprise System · Live',
+        tag: 'Enterprise System · Production',
         title: 'Digital Profile System',
         role_items: [
-          { label: 'Role', val: 'Web Application Developer' },
-          { label: 'Type', val: 'Enterprise Data System' },
-          { label: 'Stack', val: '.NET Core · MS SQL Server · REST API' },
-          { label: 'Status', val: 'Live in Production' }
+          { label: 'Role', val: 'Software Developer' },
+          { label: 'Type', val: 'Customer Management Platform' },
+          { label: 'Stack', val: '.NET · Angular · SQL Server' },
+          { label: 'Status', val: 'Live System' }
         ],
-        overview: 'A customer data management and digital profile system built to streamline enterprise onboarding and centralized record-keeping. The system enables structured storage, search, and management of customer profiles across departments.',
-        tech: ['C# / .NET Core', 'MS SQL Server', 'REST API', 'Angular', 'Entity Framework'],
-        role: 'Web Application Developer. Designed the data model, built the REST API layer, and developed the profile management UI.',
-        challenges: 'Building a flexible schema that could accommodate diverse profile types and custom fields — while maintaining query performance at scale.',
+        overview: 'Enterprise customer profile and operational data management platform designed to centralize customer records, mapping information, inventory tracking, and administrative workflows.',
+        tech: ['C#', '.NET', 'Angular', 'SQL Server', 'REST API'],
+        role: 'Worked across backend APIs, frontend modules, reporting, authentication, mapping features, and database development.',
+        challenges: 'Managing large customer datasets while maintaining performance, security, and operational usability.',
         outcomes: [
-          'Centralized customer data across departments',
-          'Reduced onboarding time with structured profile templates',
-          'Search and filter across thousands of records with sub-second response',
-          'Audit trail for profile changes with user attribution',
-          'Role-based access for department-level isolation'
+          'Centralized customer records',
+          'Map-based profile visualization',
+          'Role-based access control',
+          'Integrated reporting workflows',
+          'Inventory and operational management support'
         ]
       },
-      infosprout: {
-        tag: 'Information System · Academic Project',
-        title: 'InfoSprout',
+
+      haushala: {
+        tag: 'Health Innovation · Utopia CITYLAB',
+        title: 'Haushala – Mental Health Platform',
         role_items: [
-          { label: 'Role', val: 'Web Application Developer' },
-          { label: 'Type', val: 'Academic Project' },
-          { label: 'Stack', val: 'PHP · MySQL · Bootstrap · AJAX' },
-          { label: 'Status', val: 'Completed' }
+          { label: 'Role', val: 'Co-Founder · Product Lead' },
+          { label: 'Type', val: 'Startup Venture' },
+          { label: 'Stack', val: 'Figma · Research · Business Design' },
+          { label: 'Program', val: 'Utopia CITYLAB' }
         ],
-        overview: 'An internal notice and information management system for organizations. InfoSprout enables structured creation, categorization, and distribution of announcements to employees with role-based visibility controls.',
-        tech: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'AJAX'],
-        role: 'Full-stack development including database design, backend CRUD operations, and frontend interface.',
-        challenges: 'Designing a simple but flexible categorization system that could serve different types of organizations without becoming overly complex for end users.',
+        overview: 'Digital mental health platform concept developed through extensive research to improve accessibility, affordability, and awareness of mental health services in Nepal.',
+        tech: ['Figma', 'User Research', 'Journey Mapping', 'Business Modeling'],
+        role: 'Led research, product design, validation, stakeholder mapping, customer journey design, and business strategy.',
+        challenges: 'Validating mental health challenges across different user groups and designing culturally relevant solutions.',
         outcomes: [
-          'Notice creation with rich text and file attachments',
-          'Department-level targeting for notices',
-          'Employee acknowledgment tracking',
-          'Search and archive for historical notices',
-          'Admin and staff role separation'
+          '100+ user interviews conducted',
+          '25+ expert interviews completed',
+          '100+ stakeholder interactions',
+          '50+ prototype validation sessions',
+          'Customer journey maps developed',
+          'Value proposition design completed',
+          'Business model and partnership strategy created'
         ]
       },
+
+      sbf: {
+        tag: 'Transportation Technology · Capstone Project',
+        title: 'Smart Bus Fare System',
+        role_items: [
+          { label: 'Role', val: 'Backend Developer & Tester' },
+          { label: 'Type', val: 'University Capstone' },
+          { label: 'Stack', val: 'Laravel · React · MySQL' },
+          { label: 'Team', val: '4 Members' }
+        ],
+        overview: 'Digital transportation platform designed to modernize fare collection and passenger management through online payments, subscriptions, GPS tracking, and automated feedback systems.',
+        tech: ['Laravel', 'React', 'MySQL', 'GPS', 'QR Code', 'Khalti'],
+        role: 'Developed backend services, database architecture, fare logic, and testing workflows.',
+        challenges: 'Combining payments, subscriptions, GPS tracking, and user management into a unified platform.',
+        outcomes: [
+          'Online payment integration',
+          'Membership and pass management',
+          'GPS-based bus tracking',
+          'QR verification workflows',
+          'Facial emotion recognition implementation',
+          'Comprehensive testing and validation'
+        ]
+      },
+
+      movierec: {
+        tag: 'Machine Learning · MIT Research Project',
+        title: 'Movie Recommendation System',
+        role_items: [
+          { label: 'Role', val: 'Developer & Researcher' },
+          { label: 'Type', val: 'Machine Learning Project' },
+          { label: 'Stack', val: 'Python · Pandas · Scikit-Learn' },
+          { label: 'Dataset', val: 'MovieLens' }
+        ],
+        overview: 'Python-based movie recommendation engine implementing and comparing collaborative filtering, content-based filtering, and Naive Bayes recommendation approaches.',
+        tech: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Tkinter', 'Matplotlib'],
+        role: 'Implemented recommendation algorithms, GUI application, evaluation workflows, and dataset processing.',
+        challenges: 'Building multiple recommendation approaches and evaluating their effectiveness using benchmark datasets.',
+        outcomes: [
+          'MovieLens dataset integration',
+          'Collaborative filtering implementation',
+          'Content-based recommendation module',
+          'Naive Bayes recommendation model',
+          'Tkinter desktop application',
+          'RMSE-based evaluation and comparison'
+        ]
+      },
+
       skillsprout: {
-        tag: 'Event Platform · Academic Project',
+        tag: 'Social Platform · Community Engagement',
         title: 'SkillSprout',
         role_items: [
-          { label: 'Role', val: 'Web Application Developer' },
-          { label: 'Type', val: 'Academic Project' },
-          { label: 'Stack', val: 'PHP · MySQL · Bootstrap · AJAX' },
-          { label: 'Status', val: 'Completed' }
+          { label: 'Role', val: 'Full-Stack Developer' },
+          { label: 'Type', val: 'Social Networking Platform' },
+          { label: 'Stack', val: 'PHP · MySQL · Bootstrap' },
+          { label: 'Status', val: 'Completed Project' }
         ],
-        overview: 'An event and workshop management platform for organizing, registering, and tracking skills development events. Built to serve organizations that run regular training workshops and want streamlined registration and reporting.',
-        tech: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'AJAX'],
-        role: 'Full-stack development including event management logic, registration system, and reporting dashboard.',
-        challenges: 'Building a registration system that could handle concurrent sign-ups without conflicts, and generating useful per-event attendance reports.',
+        overview: 'Social networking platform inspired by Facebook, focused on community engagement, content sharing, user profiles, event discovery, and interaction.',
+        tech: ['PHP', 'MySQL', 'Bootstrap', 'jQuery', 'AJAX'],
+        role: 'Developed user management, posting, commenting, media uploads, and profile management workflows.',
+        challenges: 'Building interactive social features with AJAX-driven user experiences and media handling.',
         outcomes: [
-          'End-to-end event creation, publishing, and management',
-          'Online registration with capacity limits and waitlisting',
-          'Attendee dashboard with event history',
-          'Registration analytics: 312 registrations across 14 events in testing',
-          'Export functionality for attendance records'
+          'User registration and onboarding',
+          'Profile and cover photo management',
+          'Post creation and media uploads',
+          'Likes and comments system',
+          'Real-time AJAX interactions',
+          'Privacy and visibility controls'
+        ]
+      },
+
+      infosprout: {
+        tag: 'Government Technology · Civil Registration',
+        title: 'InfoSprout',
+        role_items: [
+          { label: 'Role', val: 'Full-Stack Developer' },
+          { label: 'Type', val: 'Birth Registration System' },
+          { label: 'Stack', val: 'PHP · MySQL · Bootstrap · FPDF' },
+          { label: 'Status', val: 'Completed Project' }
+        ],
+        overview: 'Digital birth registration and certificate management system designed to streamline registration workflows for citizens and local government offices.',
+        tech: ['PHP', 'MySQL', 'Bootstrap', 'FPDF', 'OTP Verification'],
+        role: 'Developed registration workflows, document management, certificate generation, authentication, and administration modules.',
+        challenges: 'Designing secure digital registration and certificate generation workflows with administrative approval processes.',
+        outcomes: [
+          'Digital birth registration workflow',
+          'Certificate generation system',
+          'OTP-based verification',
+          'Role-based administration',
+          'Document upload workflows',
+          'Citizen application tracking'
         ]
       }
     };

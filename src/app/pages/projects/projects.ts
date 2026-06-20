@@ -43,12 +43,8 @@ export class Projects implements OnInit {
   }
 
   selectProject(idx: number): void {
-    if (idx === this.currentIdx || this.isFading) return;
-    this.isFading = true;
-    setTimeout(() => {
-      this.currentIdx = idx;
-      this.isFading   = false;
-    }, 200);
+    if (idx === this.currentIdx) return;
+    this.currentIdx = idx;
   }
 
   sliderNav(dir: number): void {
