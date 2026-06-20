@@ -1,197 +1,104 @@
 <section id="projects" aria-label="Portfolio projects">
   <div class="projects-section-header">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
       <div>
         <div class="section-label"><span class="label-text">Featured Projects</span></div>
-        <h2>Real Projects. Real Impact</h2>
+        <h2>Real Projects. Real Impact.</h2>
       </div>
       <a href="#contact" class="ps-view-all" style="align-self:flex-end">View all projects →</a>
     </div>
   </div>
 
-  <div class="ps-slider">
-    <!-- LEFT: project list -->
-    <div class="ps-list">
-      <div
-        *ngFor="let slide of slides; let i = index"
-        class="ps-list-item"
-        [class.active]="i === currentIdx"
-        (click)="selectProject(i)"
-      >
-        <div class="ps-list-thumb">
-          <div [ngClass]="thumbClasses[slide.key]"></div>
-        </div>
-        <div class="ps-list-info">
-          <div class="ps-list-name">{{ slide.name }}</div>
-          <div class="ps-list-sub">{{ slide.sub }}</div>
+  <!-- Arrows sit in the section padding margin, outside the card -->
+  <div class="ps-slider-wrap">
+    <button class="ps-arrow ps-arrow-left" (click)="sliderNav(-1)" aria-label="Previous project">&#8592;</button>
+    <button class="ps-arrow ps-arrow-right" (click)="sliderNav(1)" aria-label="Next project">&#8594;</button>
+
+    <div class="ps-slider">
+      <!-- LEFT: project list -->
+      <div class="ps-list">
+        <div
+          *ngFor="let slide of slides; let i = index"
+          class="ps-list-item"
+          [class.active]="i === currentIdx"
+          (click)="selectProject(i)"
+        >
+          <div class="ps-list-thumb">
+            <img
+              [src]="'assets/images/projects/' + slide.key + '-thumb.png'"
+              [alt]="slide.name"
+              class="ps-thumb-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            />
+            <div class="ps-thumb-fallback" [ngClass]="thumbClasses[slide.key]" style="display:none"></div>
+          </div>
+          <div class="ps-list-info">
+            <div class="ps-list-name">{{ slide.name }}</div>
+            <div class="ps-list-sub">{{ slide.sub }}</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- CENTER: preview screen -->
-    <div class="ps-preview">
-      <div class="ps-screen" [style.opacity]="screenFading ? 0 : 1" style="transition:opacity .2s">
-        <!-- WashBilling screen -->
-        <ng-container *ngIf="current.screen === 'washbilling'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">washbilling.com/dashboard</span></div>
-          <div class="pss-body wb-full-mock">
-            <div class="pss-sidebar"><div class="pss-sitem act"></div><div class="pss-sitem"></div><div class="pss-sitem"></div><div class="pss-sitem"></div><div class="pss-sitem"></div></div>
-            <div class="pss-main">
-              <div class="pss-topbar-row"><div class="pss-topbar-title"></div><div class="pss-live-badge">● LIVE</div></div>
-              <div class="pss-stats-row">
-                <div class="pss-stat"><div class="pss-stat-n" style="color:#E8C96D">13,458</div><div class="pss-stat-l">Customers</div></div>
-                <div class="pss-stat"><div class="pss-stat-n" style="color:#4ade80">8,236</div><div class="pss-stat-l">Active Bills</div></div>
-                <div class="pss-stat"><div class="pss-stat-n" style="color:#B91C1C">NPR 3.2M</div><div class="pss-stat-l">Collected</div></div>
-                <div class="pss-stat"><div class="pss-stat-n" style="color:#fb923c">NPR 1.8M</div><div class="pss-stat-l">Pending</div></div>
-              </div>
-              <div class="pss-chart-area">
-                <div class="pss-chart-title">Revenue Overview</div>
-                <div class="pss-chart-bars">
-                  <div class="pss-bar" style="height:35%"></div><div class="pss-bar" style="height:55%"></div>
-                  <div class="pss-bar hi" style="height:72%"></div><div class="pss-bar" style="height:48%"></div>
-                  <div class="pss-bar" style="height:65%"></div><div class="pss-bar hi" style="height:85%"></div>
-                  <div class="pss-bar" style="height:58%"></div><div class="pss-bar hi" style="height:92%"></div>
+      <!-- CENTER: preview — real image, fallback to generated -->
+      <div class="ps-preview">
+        <img
+          [src]="'assets/images/projects/' + current.screen + '-preview.png'"
+          [alt]="current.name + ' preview'"
+          class="ps-preview-img"
+          [style.opacity]="screenFading ? 0 : 1"
+          style="transition:opacity .2s"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <!-- Generated fallback screens — shown only if image missing -->
+        <div class="ps-screen-fallback" [style.opacity]="screenFading ? 0 : 1" style="transition:opacity .2s;display:none">
+          <ng-container *ngIf="current.screen === 'washbilling'">
+            <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">washbilling.com/dashboard</span></div>
+            <div class="pss-body wb-full-mock">
+              <div class="pss-sidebar"><div class="pss-sitem act"></div><div class="pss-sitem"></div><div class="pss-sitem"></div><div class="pss-sitem"></div><div class="pss-sitem"></div></div>
+              <div class="pss-main">
+                <div class="pss-topbar-row"><div class="pss-topbar-title"></div><div class="pss-live-badge">● LIVE</div></div>
+                <div class="pss-stats-row">
+                  <div class="pss-stat"><div class="pss-stat-n" style="color:#E8C96D">13,458</div><div class="pss-stat-l">Customers</div></div>
+                  <div class="pss-stat"><div class="pss-stat-n" style="color:#4ade80">8,236</div><div class="pss-stat-l">Active Bills</div></div>
+                  <div class="pss-stat"><div class="pss-stat-n" style="color:#B91C1C">NPR 3.2M</div><div class="pss-stat-l">Collected</div></div>
+                  <div class="pss-stat"><div class="pss-stat-n" style="color:#fb923c">NPR 1.8M</div><div class="pss-stat-l">Pending</div></div>
                 </div>
-                <div class="pss-chart-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span></div>
-              </div>
-              <div class="pss-table">
-                <div class="pss-table-row header"><div class="pss-tc">Customer</div><div class="pss-tc">Meter</div><div class="pss-tc">Amount</div><div class="pss-tc">Status</div></div>
-                <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w80"></div></div><div class="pss-tc"><div class="pss-line w60"></div></div><div class="pss-tc"><div class="pss-line w50"></div></div><div class="pss-tc"><span style="color:#4ade80;font-size:.55rem">Paid</span></div></div>
-                <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w70"></div></div><div class="pss-tc"><div class="pss-line w55"></div></div><div class="pss-tc"><div class="pss-line w45"></div></div><div class="pss-tc"><span style="color:#fb923c;font-size:.55rem">Due</span></div></div>
-                <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w85"></div></div><div class="pss-tc"><div class="pss-line w60"></div></div><div class="pss-tc"><div class="pss-line w50"></div></div><div class="pss-tc"><span style="color:#4ade80;font-size:.55rem">Paid</span></div></div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-
-        <!-- SBF screen -->
-        <ng-container *ngIf="current.screen === 'sbf'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">sbf-transport.app/commuter</span></div>
-          <div class="pss-body" style="background:linear-gradient(145deg,#0c1445,#1a2060);padding:10px;flex-direction:column;gap:8px">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div style="font-size:.6rem;font-weight:700;color:#93c5fd;letter-spacing:.1em">SBF · SMART BUS FARE</div>
-              <div style="font-size:.45rem;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#4ade80;padding:2px 6px">✓ ACTIVE</div>
-            </div>
-            <div style="background:linear-gradient(135deg,#1e3a8a,#1e40af);border-radius:6px;border:1px solid rgba(255,255,255,.12);padding:10px">
-              <div style="font-size:.52rem;font-weight:800;color:#93c5fd;margin-bottom:6px">SBF PASS — UNIVERSAL</div>
-              <div style="display:flex;gap:8px;align-items:center">
-                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;width:30px;height:30px;background:rgba(255,255,255,.1);border-radius:2px"></div>
-                <div style="flex:1">
-                  <div style="height:2.5px;border-radius:2px;background:rgba(255,255,255,.3);margin-bottom:3px"></div>
-                  <div style="height:2px;border-radius:2px;background:rgba(255,255,255,.1);width:70%;margin-bottom:3px"></div>
-                  <div style="font-size:.38rem;color:rgba(147,197,253,.5)">Monthly · Discounted</div>
+                <div class="pss-chart-area">
+                  <div class="pss-chart-title">Revenue Overview</div>
+                  <div class="pss-chart-bars">
+                    <div class="pss-bar" style="height:35%"></div><div class="pss-bar" style="height:55%"></div>
+                    <div class="pss-bar hi" style="height:72%"></div><div class="pss-bar" style="height:48%"></div>
+                    <div class="pss-bar" style="height:65%"></div><div class="pss-bar hi" style="height:85%"></div>
+                    <div class="pss-bar" style="height:58%"></div><div class="pss-bar hi" style="height:92%"></div>
+                  </div>
+                  <div class="pss-chart-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span></div>
                 </div>
-              </div>
-              <div style="display:flex;gap:4px;margin-top:6px">
-                <div style="font-size:.38rem;padding:1px 5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;color:rgba(255,255,255,.4)">Khalti Pay</div>
-                <div style="font-size:.38rem;padding:1px 5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;color:rgba(255,255,255,.4)">QR Scan</div>
-                <div style="font-size:.38rem;padding:1px 5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;color:rgba(255,255,255,.4)">GPS</div>
-              </div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px">
-              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:5px;text-align:center"><div style="font-size:.6rem;font-weight:700;color:#93c5fd">12</div><div style="font-size:.38rem;color:rgba(255,255,255,.3)">Pass Types</div></div>
-              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:5px;text-align:center"><div style="font-size:.6rem;font-weight:700;color:#4ade80">GPS</div><div style="font-size:.38rem;color:rgba(255,255,255,.3)">Live Track</div></div>
-              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:5px;text-align:center"><div style="font-size:.6rem;font-weight:700;color:#e879a4">Emotion</div><div style="font-size:.38rem;color:rgba(255,255,255,.3)">Feedback</div></div>
-            </div>
-          </div>
-        </ng-container>
-
-        <!-- Haushala screen -->
-        <ng-container *ngIf="current.screen === 'haushala'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">haushala.app/checkin</span></div>
-          <div class="pss-body" style="background:radial-gradient(ellipse at 40% 30%,#4a1942,#1a0a2e 55%,#0d0518 100%);padding:12px;flex-direction:column;gap:8px;align-items:center;justify-content:center">
-            <div style="font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:4px">HAUSHALA · WELLNESS</div>
-            <div style="width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e879a4,#9333ea 60%,#4f1f8e);box-shadow:0 0 30px rgba(233,121,164,.4);margin:0 auto"></div>
-            <div style="font-size:.58rem;font-weight:500;color:rgba(233,121,164,.8);text-align:center;margin:6px 0">How are you feeling today?</div>
-            <div style="display:flex;gap:8px;justify-content:center">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(233,121,164,.15);border:1px solid rgba(233,121,164,.3);display:flex;align-items:center;justify-content:center;font-size:.9rem">😊</div>
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(233,121,164,.08);border:1px solid rgba(233,121,164,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem">😐</div>
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(233,121,164,.08);border:1px solid rgba(233,121,164,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem">😔</div>
-            </div>
-            <div style="display:flex;gap:4px;margin-top:4px">
-              <div style="font-size:.4rem;padding:2px 8px;border-radius:10px;background:rgba(233,121,164,.12);border:1px solid rgba(233,121,164,.2);color:rgba(233,121,164,.7)">mood</div>
-              <div style="font-size:.4rem;padding:2px 8px;border-radius:10px;background:rgba(147,51,234,.12);border:1px solid rgba(147,51,234,.2);color:rgba(167,139,250,.7)">sleep</div>
-              <div style="font-size:.4rem;padding:2px 8px;border-radius:10px;background:rgba(233,121,164,.08);border:1px solid rgba(233,121,164,.15);color:rgba(233,121,164,.5)">stress</div>
-            </div>
-            <div style="font-size:.38rem;color:rgba(255,255,255,.18);text-align:center;margin-top:6px">15+ participants · Kathmandu urban research</div>
-          </div>
-        </ng-container>
-
-        <!-- Profiles screen -->
-        <ng-container *ngIf="current.screen === 'profiles'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">profiles.app/customers</span></div>
-          <div class="pss-body" style="background:linear-gradient(135deg,#0f172a,#1e293b);padding:10px;flex-direction:column;gap:6px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
-              <div style="height:8px;width:70px;background:rgba(96,165,250,.3);border-radius:2px"></div>
-              <div style="font-size:.45rem;padding:2px 6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:#93c5fd">LIVE</div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
-              <div *ngFor="let grad of [['#3b82f6','#8b5cf6'],['#059669','#0d9488'],['#d97706','#dc2626'],['#7c3aed','#db2777']]"
-                   style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:6px;display:flex;gap:5px;align-items:center">
-                <div style="width:18px;height:18px;border-radius:50%;flex-shrink:0" [style.background]="'linear-gradient(135deg,' + grad[0] + ',' + grad[1] + ')'"></div>
-                <div style="flex:1">
-                  <div style="height:2.5px;border-radius:2px;background:rgba(255,255,255,.2);margin-bottom:2px"></div>
-                  <div style="height:2px;border-radius:2px;background:rgba(255,255,255,.1);width:70%"></div>
+                <div class="pss-table">
+                  <div class="pss-table-row header"><div class="pss-tc">Customer</div><div class="pss-tc">Meter</div><div class="pss-tc">Amount</div><div class="pss-tc">Status</div></div>
+                  <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w80"></div></div><div class="pss-tc"><div class="pss-line w60"></div></div><div class="pss-tc"><div class="pss-line w50"></div></div><div class="pss-tc"><span style="color:#4ade80;font-size:.55rem">Paid</span></div></div>
+                  <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w70"></div></div><div class="pss-tc"><div class="pss-line w55"></div></div><div class="pss-tc"><div class="pss-line w45"></div></div><div class="pss-tc"><span style="color:#fb923c;font-size:.55rem">Due</span></div></div>
+                  <div class="pss-table-row"><div class="pss-tc"><div class="pss-line w85"></div></div><div class="pss-tc"><div class="pss-line w60"></div></div><div class="pss-tc"><div class="pss-line w50"></div></div><div class="pss-tc"><span style="color:#4ade80;font-size:.55rem">Paid</span></div></div>
                 </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-
-        <!-- InfoSprout screen -->
-        <ng-container *ngIf="current.screen === 'infosprout'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">infosprout.app/notices</span></div>
-          <div class="pss-body" style="background:linear-gradient(160deg,#0f2027,#203a43);padding:10px;flex-direction:column;gap:5px">
-            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:3px 3px 0 0;padding:4px 7px;display:flex;align-items:center;gap:4px">
-              <div style="width:7px;height:7px;border-radius:50%;background:#60a5fa"></div>
-              <div style="font-size:.46rem;font-weight:600;color:rgba(255,255,255,.5)">InfoSprout Notice Board</div>
-            </div>
-            <ng-container *ngFor="let row of [['#60a5fa','Urgent'],['#34d399','Important'],['#fbbf24','Notice'],['#a78bfa','Memo']]">
-              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-top:none;padding:4px 7px;display:flex;gap:4px;align-items:flex-start">
-                <div style="width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:3px" [style.background]="row[0]"></div>
-                <div style="flex:1">
-                  <div style="height:2.5px;border-radius:2px;background:rgba(255,255,255,.25);margin-bottom:2px"></div>
-                  <div style="height:2px;border-radius:2px;background:rgba(255,255,255,.1);width:60%"></div>
-                </div>
-                <div style="font-size:.38rem;padding:1px 4px;border-radius:2px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)">{{ row[1] }}</div>
-              </div>
-            </ng-container>
-          </div>
-        </ng-container>
-
-        <!-- SkillSprout screen -->
-        <ng-container *ngIf="current.screen === 'skillsprout'">
-          <div class="pss-bar"><span class="pss-dot r"></span><span class="pss-dot y"></span><span class="pss-dot g"></span><span class="pss-url">skillsprout.app/events</span></div>
-          <div class="pss-body" style="background:linear-gradient(135deg,#0a0a0a,#111827);padding:10px;flex-direction:column;gap:5px">
-            <ng-container *ngFor="let ev of [['#f59e0b','Design Masterclass','Jun 12','32 spots'],['#10b981','React Workshop','Jun 18','Full'],['#6366f1','API Development','Jun 25','8 spots']]">
-              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:6px 8px;display:flex;justify-content:space-between;align-items:center" [style.border-left]="'2px solid ' + ev[0]">
-                <div>
-                  <div style="font-size:.52rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:2px">{{ ev[1] }}</div>
-                  <div style="font-size:.4rem;color:rgba(255,255,255,.3)">{{ ev[2] }}</div>
-                </div>
-                <div style="font-size:.4rem;padding:2px 5px;border-radius:3px;font-weight:700" [style.color]="ev[0]">{{ ev[3] }}</div>
-              </div>
-            </ng-container>
-            <div style="display:flex;gap:4px">
-              <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:4px;text-align:center"><div style="font-size:.58rem;font-weight:700;color:#fbbf24">14</div><div style="font-size:.36rem;color:rgba(255,255,255,.28)">Events</div></div>
-              <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:4px;text-align:center"><div style="font-size:.58rem;font-weight:700;color:#34d399">312</div><div style="font-size:.36rem;color:rgba(255,255,255,.28)">Registered</div></div>
-              <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:4px;text-align:center"><div style="font-size:.58rem;font-weight:700;color:#a5b4fc">100%</div><div style="font-size:.36rem;color:rgba(255,255,255,.28)">Tracked</div></div>
-            </div>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-
-    <!-- RIGHT: detail -->
-    <div class="ps-detail">
-      <div class="ps-detail-inner" [class.fading]="detailFading">
-        <div class="ps-project-name">{{ current.name }}</div>
-        <div class="ps-project-sub" [innerHTML]="current.sub"></div>
-        <p class="ps-project-desc">{{ current.desc }}</p>
-        <div class="ps-tech-tags">
-          <span class="ps-tag" *ngFor="let tag of current.tags">{{ tag }}</span>
+          </ng-container>
+          <ng-container *ngIf="current.screen !== 'washbilling'">
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:.75rem">{{ current.name }}</div>
+          </ng-container>
         </div>
-        <a href="#" class="ps-case-link" (click)="$event.preventDefault(); openModal(current.key)">Full Case Study →</a>
+      </div>
+
+      <!-- RIGHT: detail -->
+      <div class="ps-detail">
+        <div class="ps-detail-inner" [class.fading]="detailFading">
+          <div class="ps-project-name">{{ current.name }}</div>
+          <div class="ps-project-sub" [innerHTML]="current.sub"></div>
+          <p class="ps-project-desc">{{ current.desc }}</p>
+          <div class="ps-tech-tags">
+            <span class="ps-tag" *ngFor="let tag of current.tags">{{ tag }}</span>
+          </div>
+          <a href="#" class="ps-case-link" (click)="$event.preventDefault(); openModal(current.key)">Full Case Study →</a>
+        </div>
       </div>
     </div>
   </div>

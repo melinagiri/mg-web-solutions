@@ -6,7 +6,6 @@ import { Services }   from '../services/services';
 import { Pricing }    from '../pricing/pricing';
 import { Process }    from '../process/process';
 import { Experience } from '../experience/experience';
-import { Portfolio }  from '../portfolio/portfolio';
 import { Contact }    from '../contact/contact';
 import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
 import { Projects } from '../projects/projects';
