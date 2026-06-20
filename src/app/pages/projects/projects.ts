@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectsService } from '../../core/services/projects.service';
 import { ModalService } from '../../core/services/modal.service';
@@ -15,6 +15,7 @@ export class Projects implements OnInit {
   slides: ProjectSlide[] = [];
   currentIdx = 0;
   isFading = false;
+  lightboxOpen = false;
 
   // Aliases used by projects.html template
   get screenFading(): boolean { return this.isFading; }
@@ -50,6 +51,21 @@ export class Projects implements OnInit {
   sliderNav(dir: number): void {
     const next = (this.currentIdx + dir + this.slides.length) % this.slides.length;
     this.selectProject(next);
+  }
+
+  openLightbox(): void {
+    this.lightboxOpen = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeLightbox(): void {
+    this.lightboxOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.lightboxOpen) this.closeLightbox();
   }
 
   openModal(key: string): void {

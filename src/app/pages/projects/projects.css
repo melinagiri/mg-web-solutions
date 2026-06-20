@@ -300,3 +300,53 @@ h2 {
 :host-context(app-root > main > app-projects) #projects {
   background: var(--near-black);
 }
+/* ── Lightbox ── */
+.ps-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: lbFadeIn .2s ease;
+}
+
+@keyframes lbFadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+.ps-lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  cursor: default;
+}
+
+.ps-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  line-height: 1;
+}
+
+.ps-lightbox-close:hover {
+  background: var(--red);
+  border-color: var(--red);
+}

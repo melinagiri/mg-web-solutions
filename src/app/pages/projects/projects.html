@@ -40,13 +40,13 @@
       </div>
 
       <!-- CENTER: preview — real image, fallback to generated -->
-      <div class="ps-preview">
+      <div class="ps-preview" (click)="openLightbox()" title="Click to zoom">
         <img
           [src]="'assets/images/projects/' + current.screen + '-preview.png'"
           [alt]="current.name + ' preview'"
           class="ps-preview-img"
           [style.opacity]="screenFading ? 0 : 1"
-          style="transition:opacity .2s"
+          style="transition:opacity .2s;cursor:zoom-in"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         />
         <!-- Generated fallback screens — shown only if image missing -->
@@ -103,3 +103,14 @@
     </div>
   </div>
 </section>
+
+<!-- Lightbox overlay -->
+<div class="ps-lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()">
+  <button class="ps-lightbox-close" (click)="closeLightbox()">✕</button>
+  <img
+    [src]="'assets/images/projects/' + current.screen + '-preview.png'"
+    [alt]="current.name"
+    class="ps-lightbox-img"
+    (click)="$event.stopPropagation()"
+  />
+</div>

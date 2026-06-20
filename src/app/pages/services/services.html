@@ -1,136 +1,171 @@
 <section id="services" aria-label="Services">
 
-  <!-- Intro row — same on both, just link differs -->
+  <!-- Intro row -->
   <div class="services-intro">
     <div>
       <div class="section-label">
         <span class="label-text">Services</span>
       </div>
-      <h2 *ngIf="!isPage">What I Can Help You With</h2>
-      <h2 *ngIf="isPage">What I Can Help You With</h2>
+      <h2>What I Can Help You With</h2>
     </div>
     <a routerLink="/services" class="ps-view-all" *ngIf="!isPage">View all services →</a>
   </div>
 
-  <!-- Featured 3 cards -->
-  <div class="services-grid">
+  <!-- All service cards in one unified grid -->
+  <div class="services-grid" [class.services-grid-full]="isPage">
 
-    <article class="service-card">
+    <!-- 1: Enterprise Systems -->
+    <article class="service-card" (click)="openDetail(0)" [class.svc-clickable]="true">
       <div class="service-info">
         <div class="service-icon"><i data-lucide="building-2"></i></div>
         <h3>Enterprise Systems</h3>
         <p>Custom ERP, CRM and enterprise solutions to streamline your business operations and boost efficiency.</p>
-        <a routerLink="/contact" class="svc-learn-more">Learn more <span>→</span></a>
+        <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(0)">Learn more <span>→</span></button>
       </div>
       <div class="service-image">
         <img src="assets/images/services/enterprise.png" alt="Enterprise Systems">
       </div>
     </article>
 
-    <article class="service-card">
+    <!-- 2: Business Websites -->
+    <article class="service-card" (click)="openDetail(1)" [class.svc-clickable]="true">
       <div class="service-info">
         <div class="service-icon"><i data-lucide="globe"></i></div>
         <h3>Business Websites</h3>
         <p>Modern, responsive websites that build trust, attract customers and convert visitors into clients.</p>
-        <a routerLink="/contact" class="svc-learn-more">Learn more <span>→</span></a>
+        <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(1)">Learn more <span>→</span></button>
       </div>
       <div class="service-image">
         <img src="assets/images/services/business-website.png" alt="Business Websites">
       </div>
     </article>
 
-    <article class="service-card">
+    <!-- 3: Web Applications -->
+    <article class="service-card" (click)="openDetail(2)" [class.svc-clickable]="true">
       <div class="service-info">
         <div class="service-icon"><i data-lucide="code-2"></i></div>
         <h3>Web Applications</h3>
         <p>Scalable web apps tailored to your workflow with powerful features and clean interfaces.</p>
-        <a routerLink="/contact" class="svc-learn-more">Learn more <span>→</span></a>
+        <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(2)">Learn more <span>→</span></button>
       </div>
       <div class="service-image">
         <img src="assets/images/services/web-app.png" alt="Web Applications">
       </div>
     </article>
 
+    <!-- Extra services — only on /services page, same card style -->
+    <ng-container *ngIf="isPage">
+
+      <!-- 4: Mobile-First Design -->
+      <article class="service-card svc-extra" (click)="openDetail(3)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="smartphone"></i></div>
+          <h3>Mobile-First Design</h3>
+          <p>Responsive layouts optimized for every device with smooth interactions and fast load times.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(3)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-mobile"></div>
+      </article>
+
+      <!-- 5: API & Backend -->
+      <article class="service-card svc-extra" (click)="openDetail(4)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="database"></i></div>
+          <h3>API & Backend</h3>
+          <p>RESTful APIs and server-side logic built with .NET Core, Laravel or Node — secure and scalable.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(4)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-api"></div>
+      </article>
+
+      <!-- 6: Dashboard & Analytics -->
+      <article class="service-card svc-extra" (click)="openDetail(5)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
+          <h3>Dashboard & Analytics</h3>
+          <p>Custom admin dashboards with real-time data visualization and KPI tracking for smart decisions.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(5)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-dashboard"></div>
+      </article>
+
+      <!-- 7: Maintenance & Support -->
+      <article class="service-card svc-extra" (click)="openDetail(6)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="shield-check"></i></div>
+          <h3>Maintenance & Support</h3>
+          <p>Ongoing technical support, bug fixes, performance monitoring and feature updates post-launch.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(6)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-support"></div>
+      </article>
+
+      <!-- 8: UI/UX Design -->
+      <article class="service-card svc-extra" (click)="openDetail(7)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="pen-tool"></i></div>
+          <h3>UI/UX Design</h3>
+          <p>Clean, intuitive interface design — from wireframes and user flows to polished high-fidelity prototypes.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(7)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-design"></div>
+      </article>
+
+      <!-- 9: Technical Consultation -->
+      <article class="service-card svc-extra" (click)="openDetail(8)">
+        <div class="service-info">
+          <div class="service-icon"><i data-lucide="git-branch"></i></div>
+          <h3>Technical Consultation</h3>
+          <p>Architecture advice, tech stack selection and strategic planning for teams building new products.</p>
+          <button class="svc-learn-more" (click)="$event.stopPropagation(); openDetail(8)">Learn more <span>→</span></button>
+        </div>
+        <div class="service-image svc-image-generated svc-img-consult"></div>
+      </article>
+
+    </ng-container>
   </div>
 
-  <!-- Extra services + CTA — only on /services route -->
-  <ng-container *ngIf="isPage">
-
-    <div class="services-intro" style="margin-top:2rem;margin-bottom:.75rem">
-      <div>
-        <div class="section-label">
-          <span class="label-text">Also Available</span>
-        </div>
-      </div>
+  <!-- CTA bar — only on services page -->
+  <div class="svc-cta-bar" *ngIf="isPage">
+    <div class="svc-cta-text">
+      <h3>Not sure what you need?</h3>
+      <p>Tell me about your project and I'll suggest the right approach.</p>
     </div>
-
-    <div class="svc-extra-grid">
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="smartphone"></i></div>
-        <div class="svc-extra-body">
-          <h4>Mobile-First Design</h4>
-          <p>Responsive layouts optimized for every device — mobile, tablet and desktop — with smooth interactions and fast load times.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="database"></i></div>
-        <div class="svc-extra-body">
-          <h4>API & Backend Development</h4>
-          <p>RESTful APIs, database architecture and server-side logic built with .NET Core, Laravel, or Node — secure and scalable.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="layout-dashboard"></i></div>
-        <div class="svc-extra-body">
-          <h4>Dashboard & Analytics</h4>
-          <p>Custom admin dashboards with real-time data visualization, reporting, and KPI tracking for data-driven decisions.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="shield-check"></i></div>
-        <div class="svc-extra-body">
-          <h4>Maintenance & Support</h4>
-          <p>Ongoing technical support, bug fixes, performance monitoring, and feature updates to keep your system running smoothly.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="figma"></i></div>
-        <div class="svc-extra-body">
-          <h4>UI/UX Design</h4>
-          <p>Clean, intuitive interface design with Figma — from wireframes and user flows to polished high-fidelity prototypes.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-      <article class="svc-extra-card">
-        <div class="svc-extra-icon"><i data-lucide="git-branch"></i></div>
-        <div class="svc-extra-body">
-          <h4>Technical Consultation</h4>
-          <p>Architecture advice, tech stack selection, code reviews and strategic planning for teams building new digital products.</p>
-        </div>
-        <a routerLink="/contact" class="svc-extra-link">Enquire →</a>
-      </article>
-
-    </div>
-
-    <!-- Bottom CTA -->
-    <div class="svc-cta-bar">
-      <div class="svc-cta-text">
-        <h3>Not sure what you need?</h3>
-        <p>Tell me about your project and I'll suggest the right approach.</p>
-      </div>
-      <a routerLink="/contact" class="btn btn-primary" style="text-decoration:none">Start a Conversation →</a>
-    </div>
-
-  </ng-container>
+    <a routerLink="/contact" class="btn btn-primary" style="text-decoration:none">Start a Conversation →</a>
+  </div>
 
 </section>
+
+<!-- Service detail modal -->
+<div class="svc-modal-overlay" *ngIf="activeDetail !== null" (click)="closeDetail()">
+  <div class="svc-modal" (click)="$event.stopPropagation()">
+    <button class="svc-modal-close" (click)="closeDetail()">✕</button>
+
+    <div class="svc-modal-icon">
+      <i [attr.data-lucide]="serviceDetails[activeDetail!].icon"></i>
+    </div>
+
+    <h3 class="svc-modal-title">{{ serviceDetails[activeDetail!].title }}</h3>
+    <p class="svc-modal-tagline">{{ serviceDetails[activeDetail!].tagline }}</p>
+
+    <div class="svc-modal-body">
+      <p class="svc-modal-desc">{{ serviceDetails[activeDetail!].desc }}</p>
+
+      <div class="svc-modal-section">
+        <h4>What's included</h4>
+        <ul class="svc-modal-list">
+          <li *ngFor="let item of serviceDetails[activeDetail!].includes">{{ item }}</li>
+        </ul>
+      </div>
+
+      <div class="svc-modal-section">
+        <h4>Good for</h4>
+        <p class="svc-modal-goodfor">{{ serviceDetails[activeDetail!].goodFor }}</p>
+      </div>
+    </div>
+
+    <a routerLink="/contact" class="btn btn-primary svc-modal-cta" style="text-decoration:none" (click)="closeDetail()">
+      Discuss This Service →
+    </a>
+  </div>
+</div>
