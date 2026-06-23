@@ -1,17 +1,72 @@
 <footer>
-  <p>
-    © {{ year }}
-    <strong>MG Web Solutions</strong>
-    <span class="footer-gold-dot">·</span>
-    <a href="mailto:contact@melinagiri.com.np">contact&#64;melinagiri.com.np</a>
-  </p>
-  <div class="footer-links">
-    <a routerLink="/about">About</a>
-    <a routerLink="/services">Services</a>
-    <a routerLink="/pricing">Pricing</a>
-    <a routerLink="/process">Process</a>
-    <a routerLink="/portfolio">Work</a>
-    <a routerLink="/contact">Contact</a>
+  <div class="footer-main">
+
+    <!-- Left: Brand -->
+    <div class="footer-brand">
+      <img
+        src="assets/images/logo/mg-logo.png"
+        alt="MG Web Solutions"
+        class="footer-logo-img"
+        onerror="this.style.display='none'"
+      />
+
+      <div class="footer-brand-text">
+        <span class="footer-logo-name">MG WEB SOLUTIONS</span>
+        <span class="footer-logo-sub">
+          Strategy First. Design That Converts.
+        </span>
+      </div>
+    </div>
+
+    <!-- Center: Navigation + Copyright -->
+    <div class="footer-center">
+
+      <!--<nav
+        class="footer-nav"
+        *ngIf="isHome"
+        aria-label="Footer navigation"
+      >
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>-->
+
+      <p class="footer-copy">
+        © {{ year }} MG Web Solutions. All rights reserved.
+      </p>
+
+    </div>
+
+    <!-- Right: Socials -->
+    <div class="footer-socials">
+      <a
+        href="https://www.linkedin.com/in/melinagiri/"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+      >
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+
+      <a
+        href="https://github.com/melinagiri"
+        target="_blank"
+        rel="noopener"
+        aria-label="GitHub"
+      >
+        <i class="fa-brands fa-github"></i>
+      </a>
+
+      <a
+        href="mailto:contact@melinagiri.com.np"
+        aria-label="Email"
+      >
+        <i class="fa-regular fa-envelope"></i>
+      </a>
+    </div>
+
   </div>
-  <span class="footer-badge">Built in Kathmandu 🇳🇵</span>
 </footer>

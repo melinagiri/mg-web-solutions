@@ -5,7 +5,8 @@
         <div class="section-label"><span class="label-text">Featured Projects</span></div>
         <h2>Real Projects. Real Impact.</h2>
       </div>
-      <a href="#contact" class="ps-view-all" style="align-self:flex-end">View all projects →</a>
+      <!-- routes to the full /projects page; hidden once you're already on it -->
+      <a routerLink="/projects" class="ps-view-all" style="align-self:flex-end" *ngIf="!isPage">View all projects →</a>
     </div>
   </div>
 
@@ -101,6 +102,15 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- CTA bar — only on the standalone /projects page -->
+  <div class="ps-cta-bar" *ngIf="isPage">
+    <div class="ps-cta-text">
+      <h3>Have a project like these in mind?</h3>
+      <p>Let's talk about what you want to build — every project starts with a conversation.</p>
+    </div>
+    <a routerLink="/contact" class="btn-red-fill ps-cta-btn">Start a Project →</a>
   </div>
 </section>
 

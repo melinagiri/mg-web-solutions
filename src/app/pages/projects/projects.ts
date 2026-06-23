@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
 import { ProjectsService } from '../../core/services/projects.service';
 import { ModalService } from '../../core/services/modal.service';
 import { ProjectSlide } from '../../core/models/project.model';
@@ -7,7 +8,7 @@ import { ProjectSlide } from '../../core/models/project.model';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './projects.html',
   styleUrls: ['./projects.css']
 })
@@ -16,6 +17,7 @@ export class Projects implements OnInit {
   currentIdx = 0;
   isFading = false;
   lightboxOpen = false;
+  isPage = false;
 
   // Aliases used by projects.html template
   get screenFading(): boolean { return this.isFading; }
@@ -32,11 +34,13 @@ export class Projects implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.slides = this.projectsService.getSlides();
+    this.isPage = this.router.url === '/projects';
   }
 
   get current(): ProjectSlide {

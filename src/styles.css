@@ -313,3 +313,15 @@ app-process,
 app-contact {
   display: block;
 }
+
+/* ── Sticky footer ──
+   Keeps the footer at the bottom of the viewport on short routes
+   (/process, /contact, /about) instead of floating mid-page. */
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+app-root > main { flex: 1 0 auto; }   /* routed page fills leftover space */
+app-footer { margin-top: auto; }      /* footer pushed to the bottom */

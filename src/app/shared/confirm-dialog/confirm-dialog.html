@@ -1,0 +1,31 @@
+<div class="cd-overlay" *ngIf="open" (click)="onBackdrop($event)"
+     role="dialog" aria-modal="true" [attr.aria-label]="title || 'Dialog'">
+  <div class="cd-box" [class.cd-alert]="type === 'alert'">
+
+    <div class="cd-badge" [class.cd-badge-alert]="type === 'alert'">
+      <!-- success / confirm icon -->
+      <svg *ngIf="type === 'confirm'" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+      <!-- alert icon -->
+      <svg *ngIf="type === 'alert'" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="13"/>
+        <line x1="12" y1="16.5" x2="12" y2="16.5"/>
+      </svg>
+    </div>
+
+    <h3 class="cd-title" *ngIf="title">{{ title }}</h3>
+    <p class="cd-message">{{ message }}</p>
+
+    <div class="cd-actions">
+      <button type="button" class="cd-btn cd-cancel"
+              *ngIf="type === 'confirm'" (click)="onCancel()">{{ cancelText }}</button>
+      <button type="button" class="cd-btn cd-confirm"
+              (click)="onConfirm()">{{ confirmText }}</button>
+    </div>
+
+  </div>
+</div>
