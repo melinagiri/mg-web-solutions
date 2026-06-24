@@ -321,7 +321,7 @@ app-contact {
 app-root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px); /* viewport minus body's padding-top (fixed navbar) so short pages fit exactly one screen */
 }
 app-root > main { flex: 1 0 auto; }   /* routed page fills leftover space */
 app-footer { margin-top: auto; }      /* footer pushed to the bottom */
